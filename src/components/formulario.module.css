@@ -1,0 +1,28 @@
+.formulario{
+    display: flex;
+    flex-direction: column;
+    width: 30em;
+    margin: auto;
+    justify-content: flex-start;
+   
+}
+
+.formulario label {
+     text-align: left;
+    padding: 10px 0px 10px 0px;
+    font-weight: bold;}
+
+.formulario p{
+    color: red;
+    padding: 0px;
+    margin: 0px;
+}
+
+.formulario input, .formulario textarea{font-size: 16px; padding: 5px 10px}
+
+.botaoenviar{
+    margin: 20px auto;
+    padding: 10px 20px;
+    font-size: 1em;
+}
+

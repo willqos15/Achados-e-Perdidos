@@ -1,0 +1,104 @@
+.item{
+    display: inline-flex;
+    flex-direction: column;
+    border: 1px solid #034078;
+    background-color: #E3DFDA;
+    border-radius: 20px 20px 0px 0px;
+    transition: 0.5s;
+    width: 15em;
+    max-width: 15em;
+    margin: 10px;
+}
+
+.imagem{
+    background-color: #1282A2;
+    border-radius: 20px 20px 0px 0px;
+    transition: 0.5s;
+    
+}
+
+.imagem:hover{
+     background-color: #034078;
+
+}
+.item img{
+    display: block;
+    margin: auto;
+    width: 10em;
+    height: 10em;
+    border-radius: 100%;
+    padding: 30px 40px;
+    transition: 0.5s;
+
+    
+}
+
+.item img:hover{
+    border-radius: 20%;
+    transform: scale(1.2);
+
+}
+
+
+
+.titulo {padding: 10px;
+    background-color: #034078;
+color:#E3DFDA;
+max-height: 4em;
+cursor: pointer;
+padding: 10px;
+margin: 0px;}
+
+.titulo label {font-weight: bold; margin: 0px; font-size: 1.2em;}
+.titulo p {margin: 5px 0px; font-size: 0.8em;}
+
+.btnadmin{margin: 10px; padding: 5px 10px; border-radius: 10px;}
+.btnadmin:hover{color:white; background-color: #63372C; font-weight: bold;}
+.off{
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease;
+    display: flex;
+text-align: left;
+border-radius: 20px;
+padding: 0px;
+background-color: #fff;
+}
+
+.on {
+    transition: max-height 0.5s ease;
+    max-height: 500px;
+
+    display: flex;
+
+flex-direction: column;
+justify-content: flex-start;
+text-align: left;
+border-radius: 20px;
+color:#034078;
+background-color: #fff;
+padding: 0px;
+padding-bottom: 10px;
+}
+
+
+
+.on label{
+    transition: opacity 1s ease;
+    padding: 2px 10px;
+    opacity: 1;}
+
+.off label{
+    padding: 2px 10px;
+    opacity: 0;}
+
+
+.pon {
+    transition: opacity 0.5s ease;
+    opacity: 0;
+padding: 0px;
+margin: 0px;}
+
+.poff { transition: opacity 0.5s ease;
+    opacity: 1;}
+

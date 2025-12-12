@@ -1,0 +1,12 @@
+:root {
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  color: #011D4D;
+  background-color: #E3DFDA;
+}
+
+.container{
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+}
+
+Item{display: flex;}
