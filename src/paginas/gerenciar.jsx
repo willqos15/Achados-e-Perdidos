@@ -2,22 +2,38 @@ import Item from '../components/Item'
 import imgteste from '../img/teste.jpg'
 import axios from 'axios'
 import { useEffect, useState } from 'react'
-import {BrowserRouter as Router, Routes, Route} from 'react-router-dom'
-import PageEdit from './pageedit'
+import { Navigate, useNavigate } from 'react-router'
+import styles from "./gerenciar.module.css"
+
 
 function Gerenciar () {
 
+  const navigate = useNavigate()
+
     const [itens,setItens] = useState([]) 
 
-    function editar(id){
-      console.log(id)
-    }
+  
+
+    function paginacriar(){ navigate('/cadastro')}
+
+        function fatualizar(dados, id){
+    
+            axios.put(`http://localhost:3000/perdidos/${id}`, dados)
+            .then((res)=> { 
+              
+              //atualiza - mapeia todos itens, e o que tiver id igual recebe o valor atualizado
+                setItens(itemx=> itemx.map(x=> x._id == id ? res.data: x))
+                
+            })
+            .catch(erro=> console.log("erro ao atualizar", erro))
+        }
 
     function deletar (id) {
         axios.delete(`http://localhost:3000/perdidos/${id}`)
         .then(()=>{
             //filter percorre toda lista e retorna somente o que a comparação for verdadeira
             setItens(itemx=> itemx.filter(x=> x._id !== id))
+            
         
         })
         .catch(erro=>console.log("ERRO"+erro))
@@ -28,7 +44,6 @@ function Gerenciar () {
       axios.get("http://localhost:3000/perdidos")
       .then((resposta)=>{
         setItens(resposta.data)
-        console.log(`meu id é ${resposta.data[0]._id}`)
       })
       .catch(erro=>console.log("erro: "+erro))
     
@@ -39,23 +54,26 @@ function Gerenciar () {
 
   
 
-      
+      <div>
+        <button onClick={paginacriar} className={styles.btncriar}>Cadastrar item perdido</button>
+      </div>
     <div className="conteiner">
 
         {itens.map(x=> (
         <Item
-     nome= {x.nome}
-     img= {imgteste}
-     imgtexto = "item perdido"
-     descricao= {x.descricao}
+     Nome= {x.nome}
+     Img= {imgteste}
+     Imgtexto = "item perdido"
+     Descricao= {x.descricao}
      local= {x.local}
-     dono = {x.proprietario}
-     contato={x.contato}
+     Dono = {x.proprietario}
+     Contato={x.contato}
      key={x._id}
      id={x._id}
      admin={true}
      fdel={deletar}
-     fedit={editar}/>
+     fatualizar={fatualizar}
+     valoresget={itens}/>
     ))}
 
     </div>

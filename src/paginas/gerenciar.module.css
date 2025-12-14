@@ -1,0 +1,19 @@
+.btncriar{
+
+    padding: 20px;
+    font-weight: bold;
+    color: #fff;
+    border-radius: 20px;
+    font-size: 20px;
+    background-color:  #1282A2;
+    border:0px;
+    transition: 0.5s;
+
+}
+
+.btncriar:hover{
+     color: #1282A2; 
+     background-color:  #fff;
+     border: 3px solid #1282A2; 
+
+}

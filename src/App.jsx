@@ -6,7 +6,10 @@ import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 import PagePrincipal from './paginas/pageprincipal'
 import PageCadastro from './paginas/pagecadastro'
 import Gerenciar from './paginas/gerenciar';
-import PageEdit from './paginas/pageedit';
+import PageBusca from './paginas/pagebusca';
+import { ContextNavbar } from './ContextNavbar';
+import { useState } from 'react';
+
 
 /*PALETA DE COR
 Blue Jungle:
@@ -15,9 +18,16 @@ Blue Jungle:
 #1282A2
 #E3DFDA
 #63372C
+
+
+VERCEL JWT
+CLOUDFARE PARA HOSPEDAGEM
  */
 
 function App() {
+
+  const [itens,setItens] = useState([]) 
+  const [barraBusca, setBarraBusca] = useState([])
 
 
  
@@ -25,7 +35,7 @@ function App() {
     <>
   
     
-
+    <ContextNavbar.Provider value={{itens,setItens,barraBusca,setBarraBusca}}>
     <Router> {/*Router envolve TODA PAGINA */}
 
       <Navbar/>
@@ -33,11 +43,12 @@ function App() {
       <Routes>
         <Route path='/' element={<PagePrincipal/>}/>
         <Route path='/cadastro' element={<PageCadastro/>}/>
-        <Route path='/gerenciar/*' element={<Gerenciar/>}/>
-        <Route path='/editar' element={<PageEdit/>}/>
+        <Route path='/gerenciar/' element={<Gerenciar/>}/>
+        <Route path='/busca/' element={<PageBusca/>}/>
       </Routes>
       
     </Router>
+    </ContextNavbar.Provider>
 
 
 

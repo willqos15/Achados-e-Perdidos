@@ -27,13 +27,13 @@ function PagePrincipal (){
 
     {itens.map(x=> (
         <Item
-     nome= {x.nome}
-     img= {imgteste}
-     imgtexto = "item perdido"
-     descricao= {x.descricao}
+     Nome= {x.nome}
+     Img= {imgteste}
+     Imgtexto = "item perdido"
+     Descricao= {x.descricao}
      local= {x.local}
-     dono = {x.proprietario}
-     contato={x.contato}
+     Dono = {x.proprietario}
+     Contato={x.contato}
      key={x._id}
      id={x._id}
      admin={false}/>

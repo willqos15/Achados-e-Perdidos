@@ -1,16 +1,15 @@
 import styles from '../components/formulario.module.css'
 import { useForm } from 'react-hook-form'
 
-function Formulario({funcao, inicial}) {
+function Formulario({funcao}) {
 
     function enviar (dados)  {
-        funcao(dados)
-        reset()
-        
+      funcao(dados)
+      reset()
     }
     
 
-    const { register, handleSubmit, formState:{errors }, reset} = useForm( {mode: "onChange", defaultValues: inicial})
+    const { register, handleSubmit, formState:{errors }, reset} = useForm( {mode: "onChange"})
     
     /*
   register - linka o input ao React Hook Form (essencial)
@@ -26,6 +25,7 @@ function Formulario({funcao, inicial}) {
   setError - seta erros manualmente
   clearErrors - limpa erros
   */
+ 
     return (<>
 
        
