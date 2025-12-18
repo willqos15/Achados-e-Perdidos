@@ -18,11 +18,23 @@
     margin: 0px;
 }
 
-.formulario input, .formulario textarea{font-size: 16px; padding: 5px 10px}
+.formulario input, .formulario textarea{
+    font-size: 16px;
+    padding: 5px 10px;
+    border-radius: 20px;
+    border: 0;}
 
-.botaoenviar{
+.botaoenviar {
     margin: 20px auto;
-    padding: 10px 20px;
+    padding: 10px 30px;
     font-size: 1em;
+}
+
+.botaoenviar:hover{
+    margin: 20px auto;
+    padding: 10px 30px;
+    font-size: 1em;
+    background-color: black;
+    color: #fff;
 }
 

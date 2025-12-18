@@ -31,6 +31,14 @@ function Navbar () {
         .catch(erro=>console.log("erro: "+erro))
   }
       
+
+
+  function telaadm(){
+     
+    axios.get("http://localhost:3000/testelogin", {withCredentials: true})
+    .then(()=> navigate('/gerenciar'))
+    .catch(()=> navigate('./painel'))
+  }
         
       
     
@@ -46,16 +54,19 @@ function Navbar () {
 
       <div className={styles.itens}>
         <ul>
-          <li> <Link to="/" className={styles.link}>Página Inicial</Link> </li>
-          <li> <Link to='/gerenciar' className={styles.link}>Painel de Controle</Link> </li>
-          <form onSubmit={pesquisar}>
+          <Link to="/" className={styles.link}> <li> Início </li></Link>
+          <li onClick={telaadm} className={styles.link}> Gerenciar </li>
+       
+          
+        </ul>
+           <form onSubmit={pesquisar}>
           <input onChange={valor=> setBarraBusca(valor.target.value)}  type="search" placeholder=" Pesquise aqui" />
           </form>
-        </ul>
       </div>
       
+      
     </div>
-    <hr/>
+  
 
     </>
     

@@ -42,8 +42,9 @@ function Item({ Nome, Descricao, local, Dono, Contato, Img, Imgtexto, admin, id,
 
             <div className={styles.imagem}>
 
+                <div className={styles.containerfoto}>
                 <img src={Img} alt={Imgtexto} />
-
+                </div>
                 {admin && <>
 
                     <button

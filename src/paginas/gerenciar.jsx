@@ -18,7 +18,7 @@ function Gerenciar () {
 
         function fatualizar(dados, id){
     
-            axios.put(`http://localhost:3000/perdidos/${id}`, dados)
+            axios.put(`http://localhost:3000/perdidos/${id}`, dados, {withCredentials : true})
             .then((res)=> { 
               
               //atualiza - mapeia todos itens, e o que tiver id igual recebe o valor atualizado
@@ -29,7 +29,7 @@ function Gerenciar () {
         }
 
     function deletar (id) {
-        axios.delete(`http://localhost:3000/perdidos/${id}`)
+        axios.delete(`http://localhost:3000/perdidos/${id}`, {withCredentials : true})
         .then(()=>{
             //filter percorre toda lista e retorna somente o que a comparação for verdadeira
             setItens(itemx=> itemx.filter(x=> x._id !== id))
@@ -55,14 +55,16 @@ function Gerenciar () {
   
 
       <div>
-        <button onClick={paginacriar} className={styles.btncriar}>Cadastrar item perdido</button>
+        <button onClick={paginacriar} className={styles.btncriar}>
+          Cadastrar item perdido
+        </button>
       </div>
     <div className="conteiner">
 
         {itens.map(x=> (
         <Item
      Nome= {x.nome}
-     Img= {imgteste}
+     Img= {x.foto}
      Imgtexto = "item perdido"
      Descricao= {x.descricao}
      local= {x.local}

@@ -13,9 +13,11 @@ function PagePrincipal (){
       axios.get("http://localhost:3000/perdidos")
       .then((resposta)=>{
         setItens(resposta.data)
-        console.log(itens)
+        console.log(resposta.data)
       })
       .catch(erro=>console.log("erro: "+erro))
+
+      
     
     },[])
 
@@ -28,7 +30,7 @@ function PagePrincipal (){
     {itens.map(x=> (
         <Item
      Nome= {x.nome}
-     Img= {imgteste}
+     Img= {x.foto}
      Imgtexto = "item perdido"
      Descricao= {x.descricao}
      local= {x.local}

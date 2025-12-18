@@ -9,6 +9,8 @@ import Gerenciar from './paginas/gerenciar';
 import PageBusca from './paginas/pagebusca';
 import { ContextNavbar } from './ContextNavbar';
 import { useState } from 'react';
+import PainelAdm from './paginas/PainalAdm';
+import MFooter from './components/mfooter';
 
 
 /*PALETA DE COR
@@ -43,10 +45,12 @@ function App() {
       <Routes>
         <Route path='/' element={<PagePrincipal/>}/>
         <Route path='/cadastro' element={<PageCadastro/>}/>
-        <Route path='/gerenciar/' element={<Gerenciar/>}/>
+        <Route path='/gerenciar' element={<Gerenciar/>}/>
+        <Route path='/painel' element={<PainelAdm/>}/>
         <Route path='/busca/' element={<PageBusca/>}/>
       </Routes>
-      
+    
+    
     </Router>
     </ContextNavbar.Provider>
 

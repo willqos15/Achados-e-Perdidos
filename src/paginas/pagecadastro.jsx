@@ -3,24 +3,25 @@ import { useForm } from 'react-hook-form'
 import axios from 'axios'
 import Formulario from '../components/formulario'
 import { useState } from 'react'
-import styles from './pages.module.css'
+import styles from './pagecadastro.module.css'
 //npm install react-hook-form
 
 
 function PageCadastro() {
 
-    const[cadastrado,SetCadastrado] = useState("")
+    const[estado,setEstado] = useState("inicio")
 
     function enviar(dados){
+        
         
         dados.encontrado = false
         var dadosjson = dados
         
-        axios.post("http://localhost:3000/cadastro", dadosjson)
+        axios.post("http://localhost:3000/cadastro", dadosjson, {withCredentials : true})
         .then((resposta)=>{
             if(resposta.status === 201 || resposta.status ===200){
                 console.log("Cadastro feito com sucesso. ", resposta.status)
-                SetCadastrado("ok")
+                setEstado("fim")
             }else{
                 console.log("Dado recebido com erro. ", resposta.status)
             }})
@@ -47,8 +48,9 @@ function PageCadastro() {
   */
     return (<>
 
-       {cadastrado==="ok" && <p className={styles.resposta}> Cadastro feito com sucesso!</p>}
-        <Formulario funcao={enviar}/>
+    {estado==="fim" && <p className={styles.resposta}> Cadastro feito com sucesso!</p>}
+    <Formulario funcao={enviar}/>
+
         
 
 
