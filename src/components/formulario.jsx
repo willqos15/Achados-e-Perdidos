@@ -24,7 +24,7 @@ function Formulario({ funcao }) {
     fotoup.append("file", foto.current)
 
     setEstado("load")
-    axios.post(`${import.meta.env.URLAPI}/upload`, fotoup)
+    axios.post(`${import.meta.env.VITE_URLAPI}/upload`, fotoup)
       .then((resposta) => {
         console.log(resposta.data.url)
         const imagemurl = resposta.data.url

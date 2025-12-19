@@ -63,7 +63,7 @@ function Gerenciar () {
     }
 
     function sair(){
-      axios.post('http://localhost:3000/logout',{}, { withCredentials: true })
+      axios.post(`${import.meta.env.VITE_URLAPI}/logout`,{}, { withCredentials: true })
       .then(()=>navigate('/'))
       .catch(erro=>console.log("ERRO: ", erro))
     }
