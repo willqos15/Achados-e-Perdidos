@@ -21,7 +21,7 @@ function Navbar () {
     if(!barraBusca.trim()){return}
     console.log("buscando")
 
-    axios.get(`http://localhost:3000/busca/${barraBusca.trim()}`)
+    axios.get(`${import.meta.env.VITE_URLAPI}/busca/${barraBusca.trim()}`)
         .then((resposta)=>{
           setItens(resposta.data)
           console.log(resposta.data)
@@ -35,7 +35,7 @@ function Navbar () {
 
   function telaadm(){
      
-    axios.get("http://localhost:3000/testelogin", {withCredentials: true})
+    axios.get(`${import.meta.env.VITE_URLAPI}/testelogin`, {withCredentials: true})
     .then(()=> navigate('/gerenciar'))
     .catch(()=> navigate('./painel'))
   }

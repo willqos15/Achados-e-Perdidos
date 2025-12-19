@@ -17,7 +17,7 @@ function PageCadastro() {
         dados.encontrado = false
         var dadosjson = dados
         
-        axios.post("http://localhost:3000/cadastro", dadosjson, {withCredentials : true})
+        axios.post(`${import.meta.env.VITE_URLAPI}/cadastro`, dadosjson, {withCredentials : true})
         .then((resposta)=>{
             if(resposta.status === 201 || resposta.status ===200){
                 console.log("Cadastro feito com sucesso. ", resposta.status)

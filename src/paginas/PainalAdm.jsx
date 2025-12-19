@@ -14,7 +14,7 @@ function PainelAdm (){
 
     function login(dados){
 
-        axios.post('http://localhost:3000/testelogin',dados, {withCredentials:true})
+        axios.post(`${import.meta.env.VITE_URLAPI}/testelogin`,dados, {withCredentials:true})
         .then((resposta)=>{
             if(resposta.status === 200){
                 console.log("Login feito com sucesso", resposta.status)
