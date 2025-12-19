@@ -1,7 +1,9 @@
 .formulario{
     display: flex;
     flex-direction: column;
-    width: 30em;
+    max-width: 30em;
+    min-width: 10em;
+    padding: 0px 20px;
     margin: auto;
     justify-content: flex-start;
    
@@ -9,32 +11,53 @@
 
 .formulario label {
      text-align: left;
-    padding: 10px 0px 10px 0px;
+    padding: 30px 0px 10px 0px;
     font-weight: bold;}
 
 .formulario p{
     color: red;
-    padding: 0px;
+    padding: 5px;
     margin: 0px;
 }
 
-.formulario input, .formulario textarea{
+.formulario input[type="file"]{
+    padding: 0px;
+}
+
+
+.botaoenviar {
+    margin: 20px auto;   
+}
+
+
+.botaoenviar, .formulario input[type="file"]::-webkit-file-upload-button{
+    border-radius: 20px;
+    padding: 10px 20px;
+    background-color: #1282A2; 
+    border: 0;
+    color: #fff;
+    font-weight: bold;
+    transition: 0.5s;
+    font-size: 1em;
+}
+
+.botaoenviar:hover, .formulario input[type="file"]::-webkit-file-upload-button:hover{
+    border-radius: 20px;
+    padding: 10px 20px;
+    background-color: #034078;
+    border: 0;
+    color: #fff;
+    font-weight: bold;
+}
+
+.formulario input[type="file"]::-webkit-file{
+    padding: 0px 20px;
+}
+
+.formulario input[type="text"], .formulario input[type="number"], .formulario textarea{
     font-size: 16px;
-    padding: 5px 10px;
+    padding: 5px 20px;
     border-radius: 20px;
     border: 0;}
 
-.botaoenviar {
-    margin: 20px auto;
-    padding: 10px 30px;
-    font-size: 1em;
-}
-
-.botaoenviar:hover{
-    margin: 20px auto;
-    padding: 10px 30px;
-    font-size: 1em;
-    background-color: black;
-    color: #fff;
-}
 

@@ -27,9 +27,14 @@
     border: 0;
 }
 
-.loginmain form p {margin-top: 8px;
-padding-left: 13%;
-color: rgb(255, 232, 85);
+.pcampo {margin-top: 5px;
+padding-left: 20%;
+color: rgb(255, 221, 0);
+font-weight: bold;}
+
+.plogin {margin: auto;
+padding: 10px 0px 0px 0px;
+color: rgb(255, 221, 0);
 font-weight: bold;}
 
 .btnlogin{
@@ -39,7 +44,7 @@ padding: 10px 20px;
 width: 100px;
 align-self: center;
 border-radius: 20px;
-margin: 20px 0px;
+margin: 10px 0px 5px 0px;
 background-color: #fff;
 color: #034078;
 transition: 0.5s;

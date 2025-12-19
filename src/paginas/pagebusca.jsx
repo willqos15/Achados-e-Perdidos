@@ -13,7 +13,7 @@ function PageBusca(){
     {itens.map(x=> (
         <Item
      Nome= {x.nome}
-     Img= {imgteste}
+     Img= {x.foto}
      Imgtexto = "item perdido"
      Descricao= {x.descricao}
      local= {x.local}

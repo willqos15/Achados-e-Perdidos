@@ -1,21 +1,24 @@
 import styles from '../components/formulario.module.css'
 import { useForm } from 'react-hook-form'
 import axios from 'axios'
-import { useRef, useState } from 'react'
+import { use, useRef, useState } from 'react'
 
 
 function Formulario({ funcao }) {
 
   const foto = useRef(null)
-  const [estado,setEstado] = useState("ini")
+  const [estado,setEstado] = useState("1")
+  const [msgfoto,setMsgFoto] = useState()
  
 
   function enviar(dados) {
     
 
     console.log("funcao")
-    if (!foto.current) return
+    if (!foto.current){ return setMsgFoto("erro")}
+
     console.log("foto okay")
+    setMsgFoto("")
 
     const fotoup = new FormData()
     fotoup.append("file", foto.current)
@@ -29,12 +32,18 @@ function Formulario({ funcao }) {
         console.log(finalData)
         funcao(finalData)
         reset()
-        setEstado("ini")
+
+        setTimeout(()=>{
+           setEstado("1")
+        },1000)
+       
         
       }
       )
       .catch((erro) => { console.log(erro) 
-        setEstado("ini")
+        setTimeout(()=>{
+           setEstado("1")
+        },1000)
       })
   }
 
@@ -57,40 +66,59 @@ control - usado em compomentes controlado como <Controller/>
 setError - seta erros manualmente
 clearErrors - limpa erros
 */
+function Scrollar(e){
+
+  setTimeout(()=>{
+    e.target.scrollIntoView(
+    {behavior: "smooth", block: "center"})
+  }
+    ,300)
+
+  
+}
 
   return (<>
 
   
     {estado==="load" && <p>Carregando...</p>}
-    {estado==="ini" &&
+    
 
     <form onSubmit={handleSubmit(enviar)} className={styles.formulario}>
+      {estado==="1" && 
+      <>
+      
       <label> Nome do item perdido:</label>
-      <input {...register("nome", { required: true })} type="text" placeholder="Exemplo: Estojo, Chupeta, Lápis, Garrafa de água e etc." />
+      <input {...register("nome", { required: true })} type="text" placeholder="Estojo, Chupeta, Lápis e etc." onFocus={Scrollar}/>
       {errors.nome && <p>Campo obrigatório</p>}
 
       <label> Carregue uma imagem do item:</label>
       <input type='file' name="file" onChange={e => foto.current = e.target.files[0]} />
+      {msgfoto==="erro" && <p>Campo obrigatório</p>}
+      
 
       <label> Descrição:</label>
-      <textarea {...register("descricao", { required: true })} rows={5} placeholder='Descreva a aparência, cor, tamanho, detalhes e etc.' />
+      <textarea {...register("descricao", { required: true })} rows={2} placeholder='Descreva a aparência, cor, tamanho, detalhes e etc.' onFocus={Scrollar}/>
       {errors.descricao && <p>Campo obrigatório</p>}
+      
 
       <label> Local onde foi perdido:</label>
-      <input {...register("local", { required: true })} type="text" placeholder='Exemplo: Pátio, Sala de aula, Quadra e etc.' />
+      <input {...register("local", { required: true })} type="text" placeholder='Pátio, Sala, Quadra e etc.' onFocus={Scrollar}/>
       {errors.local && <p>Campo obrigatório</p>}
-
+      
       <label> Proprietário:</label>
-      <input {...register("proprietario", { required: true })} type="text" placeholder='O nome completo do dono do objeto.' />
+      <input {...register("proprietario", { required: true })} type="text" placeholder='Nome completo.' onFocus={Scrollar}/>
       {errors.proprietario && <p>Campo obrigatório</p>}
 
       <label> Contato (Whatsapp):</label>
-      <input {...register("contato", { required: "Campo obrigatório", minLength: { value: 11, message: "O número precisa ter no mínimo 10 digítos. Não esqueça o DDD." } })} type="text" placeholder='(DDD) 90000 0000' />
+      <input {...register("contato", { required: "Campo obrigatório", minLength: { value: 11, message: "O número precisa ter no mínimo 10 digítos. Não esqueça o DDD." } })} type="number" placeholder='(DDD) 90000 0000' onFocus={Scrollar}/>
       {errors.contato && <p>{errors.contato.message}</p>}
-
+      
       <input type="submit" value="Enviar" className={styles.botaoenviar} />
+        
+      </>
+      }
     </form>
-    }
+    
     
 
 

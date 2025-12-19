@@ -17,6 +17,10 @@
     margin-bottom: 0px;
     margin-top: 0px;
     padding: 10px;
+    border-radius: 10px;
+    background-color: #fff;
+    border: 2px solid #034078;
+    color:#034078;
 }
 
 
@@ -71,6 +75,7 @@ margin: 20px auto;}
     cursor: pointer;
     padding: 10px;
     margin: 0px;
+    user-select: none;
 }
 
 .titulo label {
@@ -88,7 +93,7 @@ margin: 20px auto;}
     margin: 10px;
     padding: 10px 10px;
     border-radius: 10px;
-    color: #63372C;
+    color: #034078;
     border: 0px;
     font-weight: bold;
     transition: 0.5s;
@@ -96,7 +101,7 @@ margin: 20px auto;}
 
 .btnadmin:hover {
     color: white;
-    background-color: #63372C;
+    background-color: #011D4D;
     font-weight: bold;
 }
 
@@ -118,7 +123,7 @@ margin: 20px auto;}
     margin: 10px auto;
     width: 40%;
     font-weight: bold;
-    background-color: #63372C;
+    background-color: #011D4D;
     color: #fff;
     padding: 10px 10px;
     border-radius: 10px;
@@ -129,7 +134,7 @@ margin: 20px auto;}
 .off {
     max-height: 0;
     overflow: hidden;
-    transition: max-height 0.5s ease;
+    transition: max-height 0.1s ease;
     display: flex;
     text-align: left;
     border-radius: 0px;

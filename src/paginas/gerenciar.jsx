@@ -2,7 +2,7 @@ import Item from '../components/Item'
 import imgteste from '../img/teste.jpg'
 import axios from 'axios'
 import { useEffect, useState } from 'react'
-import { Navigate, useNavigate } from 'react-router'
+import { useNavigate } from 'react-router'
 import styles from "./gerenciar.module.css"
 
 
@@ -38,6 +38,12 @@ function Gerenciar () {
         })
         .catch(erro=>console.log("ERRO"+erro))
     }
+
+    function sair(){
+      axios.post('http://localhost:3000/logout')
+      .then(()=>navigate('/'))
+      .catch(erro=>console.log("ERRO: ", erro))
+    }
     
       useEffect(()=>{
     
@@ -54,9 +60,19 @@ function Gerenciar () {
 
   
 
-      <div>
+      <div className={styles.botoesger}>
+
+    
         <button onClick={paginacriar} className={styles.btncriar}>
-          Cadastrar item perdido
+          Cadastrar ítem
+        </button>
+
+        <button className={styles.btnreport}>
+          Reportar problema
+        </button>
+
+        <button onClick={sair} className={styles.btnlogout}>
+          Sair da Conta
         </button>
       </div>
     <div className="conteiner">
@@ -81,7 +97,9 @@ function Gerenciar () {
     </div>
 
      
-    
+          <div>
+
+      </div>
     
     </>)
 

@@ -22,10 +22,19 @@ function PageCadastro() {
             if(resposta.status === 201 || resposta.status ===200){
                 console.log("Cadastro feito com sucesso. ", resposta.status)
                 setEstado("fim")
-            }else{
-                console.log("Dado recebido com erro. ", resposta.status)
-            }})
-        .catch((erro)=>{console.error("Erro:", erro)})
+            } 
+        })
+        .catch((erro)=>{
+            if (erro.status === 403){
+                setEstado("limite")
+            }
+            
+            else {
+                setEstado("erro")
+                console.log("Dado recebido com erro. ", erro.status)
+            }
+            
+            console.error("Erro:", erro)})
 
         }
     
@@ -49,6 +58,8 @@ function PageCadastro() {
     return (<>
 
     {estado==="fim" && <p className={styles.resposta}> Cadastro feito com sucesso!</p>}
+    {estado==="limite" && <p className={styles.rerro}> Limite de cadastros excedidos!</p>}
+    {estado==="erro" && <p className={styles.rerro}> Erro ao cadastrar!</p>}
     <Formulario funcao={enviar}/>
 
         
