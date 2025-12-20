@@ -1,7 +1,8 @@
 import { useContext, useState} from "react"
 import { ContextNavbar } from "../ContextNavbar"
 import Item from "../components/Item"
-import imgteste from '../img/teste.jpg'
+import styles from "./pagebusca.module.css"
+
 
 function PageBusca(){
 
@@ -9,9 +10,9 @@ function PageBusca(){
     
     return(<>
 
-    {!itens && <p>Item não encontrado!</p>}
-    {itens && <> 
-    {itens.map(x=> (
+    {!itens && <p className={styles.paviso}>Nenhum item encontrado! </p>}
+
+    {itens?.map(x=> (
         <Item
      Nome= {x.nome}
      Img= {x.foto}
@@ -24,8 +25,7 @@ function PageBusca(){
      id={x._id}
      admin={false}/>
     ))}
-    </>
-    }
+    
 
 
     </>)

@@ -18,19 +18,25 @@ function Navbar () {
    e.preventDefault()
     
     //verifica se existe algo no barra busca retirando os espaços
-    if(!barraBusca.trim()){return}
+    if(!barraBusca.trim()){return
+    }
     
-
     axios.get(`${import.meta.env.VITE_URLAPI}/busca/${barraBusca.trim()}`)
         .then((resposta)=>{
           setItens(resposta.data)
-          navigate(`/busca`)
+          navigate('/busca')
+          
 
         })
         .catch(erro=>{
-          if(erro.status === 404) { navigate(`/busca`)}
-          else{}
-        })
+          if(erro.status === 404) {
+            navigate('/busca')
+            setItens(null)
+           }
+          else{setItens(null)}
+        }
+      
+      )
   }
       
 
@@ -65,7 +71,7 @@ function Navbar () {
           
         </ul>
            <form onSubmit={pesquisar}>
-          <input onChange={valor=> setBarraBusca(valor.target.value)}  type="search" placeholder=" Pesquise aqui" />
+          <input onChange={valor=> setBarraBusca(valor.target.value)} name="pesquisa" type="search" placeholder=" Pesquise aqui" />
           </form>
       </div>
       

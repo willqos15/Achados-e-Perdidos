@@ -1,11 +1,9 @@
 import Item from '../components/Item'
-import imgteste from '../img/teste.jpg'
-import axios from 'axios'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { useNavigate } from 'react-router'
 import styles from "./gerenciar.module.css"
 import { DeletaItem, EditarItem, ListarItem } from '../hookapi/fetchItem'
-import { useQuery, useMutation, QueryClient, useQueryClient } from '@tanstack/react-query'
+import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query'
 
 function Gerenciar () {
 
@@ -100,7 +98,8 @@ function Gerenciar () {
       </div>
     <div className="conteiner">
 
-        {data.map(x=> (
+    {data.length<=0 && <p className={styles.paviso}>Nenhum item cadastrado! </p>}
+        {data?.map(x=> (
         <Item
      Nome= {x.nome}
      Img= {x.foto}

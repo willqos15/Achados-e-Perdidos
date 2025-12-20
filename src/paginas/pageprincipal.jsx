@@ -1,9 +1,7 @@
 import Item from '../components/Item'
-import imgteste from '../img/teste.jpg'
-import { useEffect, useState } from 'react';
-import axios from 'axios'  //npm install axios para consumir API
 import { useQuery } from '@tanstack/react-query';
 import { ListarItem } from '../hookapi/fetchItem';
+import styles from "./pageprincipal.module.css"
 
 
 function PagePrincipal (){
@@ -35,6 +33,7 @@ function PagePrincipal (){
 
     <div className="conteiner">
 
+    {data.length<=0 && <p className={styles.paviso}>Nenhum item cadastrado! </p>}
     {data?.map(x=> (
         <Item
      Nome= {x.nome}

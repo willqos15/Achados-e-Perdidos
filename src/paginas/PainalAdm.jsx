@@ -3,31 +3,31 @@ import {useNavigate } from "react-router"
 import { useForm } from "react-hook-form"
 import { useEffect, useState } from "react"
 import styles from './PainelAdm.module.css'
+import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query'
+import { Loginadm } from "../hookapi/fetchItem"
 
 function PainelAdm (){
     
     const[msglogin,setMsgLogin] = useState("")
 
     const {handleSubmit, watch, register, formState: {errors}} = useForm({mode: "onChange"})
-    const changec = watch()
     const navigate = useNavigate()
 
-    function login(dados){
 
-        axios.post(`${import.meta.env.VITE_URLAPI}/testelogin`,dados)
-        .then((resposta)=>{
-            if(resposta.status === 200){
-                
-                const token = resposta.data.token
+    
+        const queryClient = useQueryClient()
+        const mutationLogin = useMutation(
+            {mutationFn: (dados)=> Loginadm(dados),
+            onSuccess: (data)=>{
+                const token = data.token
                 localStorage.setItem("token", token)
                 navigate('/gerenciar')
             }
-            
+             }
+        )
 
-        })
-        .catch(()=>{
-            setMsgLogin("erro")
-        })
+    function login(dados){
+        mutationLogin.mutate(dados)
     }
 
     useEffect(()=>{ 
@@ -43,6 +43,10 @@ function PainelAdm (){
     return(
         <div className={styles.loginmain}>
 
+            {mutationLogin.isLoading && <p>Carregando...</p>}
+            {mutationLogin.isError && <p>Erro...</p>}
+
+            {!mutationLogin.isLoading && <>
         <h2>Área Restrita</h2>
         <form onSubmit={handleSubmit(login)}>
 
@@ -62,6 +66,7 @@ function PainelAdm (){
         <button type="submit" className={styles.btnlogin}> Enviar </button>
         
         </form>
+        </>}
         
         </div>
     )
