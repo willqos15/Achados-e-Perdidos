@@ -9,7 +9,8 @@ function PageBusca(){
     
     return(<>
 
-
+    {!itens && <p>Item não encontrado!</p>}
+    {itens && <> 
     {itens.map(x=> (
         <Item
      Nome= {x.nome}
@@ -23,6 +24,10 @@ function PageBusca(){
      id={x._id}
      admin={false}/>
     ))}
+    </>
+    }
+
+
     </>)
 }
 
