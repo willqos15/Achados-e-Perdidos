@@ -31,6 +31,15 @@ function Item({ Nome, Descricao, local, Dono, Contato, Img, Imgtexto, admin, id,
     }
 
     
+    function Scrollar(e){
+
+  setTimeout(()=>{
+    e.target.scrollIntoView(
+    {behavior: "smooth", block: "center"})
+  }
+    ,300)
+
+}
     
 
 
@@ -82,23 +91,28 @@ function Item({ Nome, Descricao, local, Dono, Contato, Img, Imgtexto, admin, id,
 
                      <form onSubmit={handleSubmit((dados) => fatualizar(dados, id))}>
                         <label> <strong>Nome: </strong></label>
-                        <input {... register("nome", { required: true })} type="text" />
+                        <input {... register("nome", { required: true })} type="text" onFocus={Scrollar} />
                         {errors.nome && <p>Campo obrigatório</p>}
 
                         <label> <strong>Descrição: </strong></label>
-                        <input  {...register("descricao", { required: true })} type="text" />
+                        <input  {...register("descricao", { required: true })} type="text" onFocus={Scrollar} />
                         {errors.descricao && <p>Campo obrigatório</p>}
 
                         <label> <strong>Local onde foi perdido: </strong></label>
-                        <input  {...register("local", { required: true })} type="text" />
+                        <input  {...register("local", { required: true })} type="text" onFocus={Scrollar}/>
                         {errors.local && <p>Campo obrigatório</p>}
 
                         <label> <strong>Proprietário: </strong></label>
-                        <input  {...register("proprietario", { required: true })} type="text" />
+                        <input  {...register("proprietario", { required: true })} type="text" onFocus={Scrollar}/>
                         {errors.proprietario && <p>Campo obrigatório</p>}
 
                         <label> <strong>Contato: </strong></label>
-                        <input {...register("contato", { required: "Campo obrigatório", minLength: { value: 11, message: "O número precisa ter no mínimo 10 digítos. Não esqueça o DDD." } })} type="text" placeholder='(DDD) 90000 0000' />
+                        <input {...register("contato",
+                            { required: "Campo obrigatório",
+                            minLength: { value: 11,
+                            message: "O número precisa ter no mínimo 10 digítos. Não esqueça o DDD." } })}
+                            type="number" placeholder='(DDD) 90000 0000' 
+                            onFocus={Scrollar}/>
                         {errors.contato && <p>{errors.contato.message}</p>}
                         {msg}
                         <button onClick={()=>{

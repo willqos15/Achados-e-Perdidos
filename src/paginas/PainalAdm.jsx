@@ -14,16 +14,18 @@ function PainelAdm (){
 
     function login(dados){
 
-        axios.post(`${import.meta.env.VITE_URLAPI}/testelogin`,dados, {withCredentials:true})
+        axios.post(`${import.meta.env.VITE_URLAPI}/testelogin`,dados)
         .then((resposta)=>{
             if(resposta.status === 200){
-                console.log("Login feito com sucesso", resposta.status)
+                
+                const token = resposta.data.token
+                localStorage.setItem("token", token)
                 navigate('/gerenciar')
             }
             
 
         })
-        .catch((erro)=>{console.log("usuario ou senha incorreta", erro)
+        .catch(()=>{
             setMsgLogin("erro")
         })
     }

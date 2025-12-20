@@ -28,16 +28,22 @@ function Navbar () {
           navigate(`/busca`)
 
         })
-        .catch(erro=>console.log("erro: "+erro))
+        .catch(erro=>{
+          if(erro.status === 404) { window.alert("Não enconstrado")}
+          else{
+          console.log("erro: "+erro)}})
   }
       
 
 
   function telaadm(){
-     
-    axios.get(`${import.meta.env.VITE_URLAPI}/testelogin`, {withCredentials: true})
+     const token = localStorage.getItem("token")
+     if (!token) return navigate('./painel')
+    axios.get(`${import.meta.env.VITE_URLAPI}/testelogin`, 
+      {headers: {authorization: `Bearer ${token}`}})
     .then(()=> navigate('/gerenciar'))
-    .catch(()=> navigate('./painel'))
+    .catch(()=> navigate('/painel'))
+    
   }
         
       

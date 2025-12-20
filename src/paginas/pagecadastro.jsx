@@ -16,8 +16,11 @@ function PageCadastro() {
         
         dados.encontrado = false
         var dadosjson = dados
+        const token = localStorage.getItem("token")
         
-        axios.post(`${import.meta.env.VITE_URLAPI}/cadastro`, dadosjson, {withCredentials : true})
+        axios.post(`${import.meta.env.VITE_URLAPI}/cadastro`, dadosjson, 
+             {headers: {authorization: `Bearer ${token}`}}
+        )
         .then((resposta)=>{
             if(resposta.status === 201 || resposta.status ===200){
                 console.log("Cadastro feito com sucesso. ", resposta.status)

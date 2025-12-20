@@ -63,9 +63,11 @@ function Gerenciar () {
     }
 
     function sair(){
-      axios.post(`${import.meta.env.VITE_URLAPI}/logout`,{}, { withCredentials: true })
-      .then(()=>navigate('/'))
-      .catch(erro=>console.log("ERRO: ", erro))
+      //axios.post(`${import.meta.env.VITE_URLAPI}/logout`)
+      //.then(()=>{
+        localStorage.removeItem("token")
+        navigate('/')//})
+      //.catch(erro=>console.log("ERRO: ", erro))
     }
     
     //   useEffect(()=>{

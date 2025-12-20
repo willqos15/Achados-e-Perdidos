@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios, { AxiosHeaders } from "axios";
 
 //exporta função pra usar fora desse arquivo
 export const ListarItem = async ()=>{
@@ -8,11 +8,16 @@ export const ListarItem = async ()=>{
 }
 
 export const EditarItem = async (id, dados)=>{
-    const {data} = await  axios.put(`${import.meta.env.VITE_URLAPI}/perdidos/${id}`, dados, {withCredentials : true})
+    const token = localStorage.getItem("token")
+    console.log("meu token", token)
+    const {data} = await  axios.put(`${import.meta.env.VITE_URLAPI}/perdidos/${id}`, dados, 
+        {headers: {authorization: `Bearer ${token}`}})
     return data
 }
 
 export const DeletaItem = async (id)=> {
-    const {data} = await axios.delete(`${import.meta.env.VITE_URLAPI}/perdidos/${id}`, {withCredentials : true})
+    const token = localStorage.getItem("token")
+    const {data} = await axios.delete(`${import.meta.env.VITE_URLAPI}/perdidos/${id}`,
+        {headers: {authorization: `Bearer ${token}`}})
     return data
 }

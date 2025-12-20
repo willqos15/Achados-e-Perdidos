@@ -24,7 +24,9 @@ function Formulario({ funcao }) {
     fotoup.append("file", foto.current)
 
     setEstado("load")
-    axios.post(`${import.meta.env.VITE_URLAPI}/upload`, fotoup)
+    axios.post(`${import.meta.env.VITE_URLAPI}/upload`, fotoup,
+      {headers: {authorization: `Bearer ${import.meta.env.VITE_BTOKEN}`}}
+    )
       .then((resposta) => {
         console.log(resposta.data.url)
         const imagemurl = resposta.data.url
@@ -74,7 +76,6 @@ function Scrollar(e){
   }
     ,300)
 
-  
 }
 
   return (<>
@@ -88,11 +89,11 @@ function Scrollar(e){
       <>
       
       <label> Nome do item perdido:</label>
-      <input {...register("nome", { required: true })} type="text" placeholder="Estojo, Chupeta, Lápis e etc." onFocus={Scrollar}/>
+      <input {...register("nome", { required: true })} type="text" placeholder="Exemplo: Lápis, borracha e etc." onFocus={Scrollar}/>
       {errors.nome && <p>Campo obrigatório</p>}
 
       <label> Carregue uma imagem do item:</label>
-      <input type='file' name="file" onChange={e => foto.current = e.target.files[0]} />
+      <input type='file' name="file" onChange={e => foto.current = e.target.files[0]} onFocus={Scrollar} />
       {msgfoto==="erro" && <p>Campo obrigatório</p>}
       
 
@@ -102,7 +103,7 @@ function Scrollar(e){
       
 
       <label> Local onde foi perdido:</label>
-      <input {...register("local", { required: true })} type="text" placeholder='Pátio, Sala, Quadra e etc.' onFocus={Scrollar}/>
+      <input {...register("local", { required: true })} type="text" placeholder='Exemplo: Pátio, Sala e etc.' onFocus={Scrollar}/>
       {errors.local && <p>Campo obrigatório</p>}
       
       <label> Proprietário:</label>
