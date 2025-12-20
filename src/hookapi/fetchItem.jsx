@@ -9,7 +9,6 @@ export const ListarItem = async ()=>{
 
 export const EditarItem = async (id, dados)=>{
     const token = localStorage.getItem("token")
-    console.log("meu token", token)
     const {data} = await  axios.put(`${import.meta.env.VITE_URLAPI}/perdidos/${id}`, dados, 
         {headers: {authorization: `Bearer ${token}`}})
     return data

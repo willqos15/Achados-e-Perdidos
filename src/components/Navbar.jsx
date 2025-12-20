@@ -19,19 +19,18 @@ function Navbar () {
     
     //verifica se existe algo no barra busca retirando os espaços
     if(!barraBusca.trim()){return}
-    console.log("buscando")
+    
 
     axios.get(`${import.meta.env.VITE_URLAPI}/busca/${barraBusca.trim()}`)
         .then((resposta)=>{
           setItens(resposta.data)
-          console.log(resposta.data)
           navigate(`/busca`)
 
         })
         .catch(erro=>{
-          if(erro.status === 404) { window.alert("Não enconstrado")}
-          else{
-          console.log("erro: "+erro)}})
+          if(erro.status === 404) { navigate(`/busca`)}
+          else{}
+        })
   }
       
 

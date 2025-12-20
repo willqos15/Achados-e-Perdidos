@@ -25,7 +25,7 @@ function Item({ Nome, Descricao, local, Dono, Contato, Img, Imgtexto, admin, id,
     function editar() {
         setEditando(!editando)
         //resetar( busca valores de determinado id)
-        console.log(valoresget)
+        //console.log(valoresget)
          reset(valoresget.find(x => x._id == id))    
         
     }

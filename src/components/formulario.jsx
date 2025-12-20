@@ -13,11 +13,8 @@ function Formulario({ funcao }) {
 
   function enviar(dados) {
     
-
-    console.log("funcao")
     if (!foto.current){ return setMsgFoto("erro")}
 
-    console.log("foto okay")
     setMsgFoto("")
 
     const fotoup = new FormData()
@@ -28,10 +25,8 @@ function Formulario({ funcao }) {
       {headers: {authorization: `Bearer ${import.meta.env.VITE_BTOKEN}`}}
     )
       .then((resposta) => {
-        console.log(resposta.data.url)
         const imagemurl = resposta.data.url
         const finalData = { ...dados, foto: imagemurl }
-        console.log(finalData)
         funcao(finalData)
         reset()
 
@@ -42,7 +37,7 @@ function Formulario({ funcao }) {
         
       }
       )
-      .catch((erro) => { console.log(erro) 
+      .catch(() => {
         setTimeout(()=>{
            setEstado("1")
         },1000)

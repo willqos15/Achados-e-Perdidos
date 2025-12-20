@@ -23,7 +23,6 @@ function PageCadastro() {
         )
         .then((resposta)=>{
             if(resposta.status === 201 || resposta.status ===200){
-                console.log("Cadastro feito com sucesso. ", resposta.status)
                 setEstado("fim")
             } 
         })
@@ -34,7 +33,6 @@ function PageCadastro() {
             
             else {
                 setEstado("erro")
-                console.log("Dado recebido com erro. ", erro.status)
             }
             
             console.error("Erro:", erro)})
