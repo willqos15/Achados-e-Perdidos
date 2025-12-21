@@ -30,6 +30,7 @@ function App() {
 
   const [itens,setItens] = useState([]) 
   const [barraBusca, setBarraBusca] = useState([])
+  const [adm,setAdm] = useState(false)
 
 
  
@@ -37,7 +38,7 @@ function App() {
     <>
   
     
-    <ContextNavbar.Provider value={{itens,setItens,barraBusca,setBarraBusca}}>
+    <ContextNavbar.Provider value={{itens,setItens,barraBusca,setBarraBusca,adm,setAdm}}>
     <Router> {/*Router envolve TODA PAGINA */}
 
       <Navbar/>

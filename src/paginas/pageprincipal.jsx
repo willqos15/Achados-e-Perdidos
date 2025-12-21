@@ -31,9 +31,12 @@ function PagePrincipal (){
 
     return(<>
 
-    <div className="conteiner">
+    <div className={styles.container}>
 
-    {data.length<=0 && <p className={styles.paviso}>Nenhum item cadastrado! </p>}
+    {data.length<=0 &&
+    <p className={styles.paviso}>Nenhum item cadastrado! </p>
+    }
+
     {data?.map(x=> (
         <Item
      Nome= {x.nome}

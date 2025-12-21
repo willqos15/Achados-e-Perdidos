@@ -2,17 +2,6 @@ import styles from "./Item.module.css"
 import { useEffect, useState } from "react"
 import { useForm } from 'react-hook-form'
 
-
-/*DICAS TELEGRAM:
-Num projeto pessoal aqui, usei a Cloudflare para guardar as imagens
-O frontend ficou no Github Pages mesmo
-
-Quanto ao upload, tem 3 opções: 1 salvar no S3, 2 salvar no Dropbox, 3 salvar em diretório do servidor, onde está o backend
-E no banco de dados, salva apenas a referência do arquivo.
-
-por um grid, alinhar a esquerda.
-*/
-
 function Item({ Nome, Descricao, local, Dono, Contato, Img, Imgtexto, admin, id, fdel, valoresget, fatualizar }) {
     const [aberto, setAberto] = useState(false)
     const [editando, setEditando] = useState(false)
@@ -44,18 +33,23 @@ function Item({ Nome, Descricao, local, Dono, Contato, Img, Imgtexto, admin, id,
 
 
 
-    return (
+    return ( <>
 
 
         <div className={styles.item}>
 
-            <div className={styles.imagem}>
-
+        
+            
+            <div onClick={() => { 
+                if(!admin) {setAberto(!aberto)}
+                if(admin) {editar()}
+             }} className={styles.card}> 
+                <div className={styles.imagem}>
                 <div className={styles.containerfoto}>
                 <img src={Img} alt={Imgtexto} />
                 </div>
-                {admin && <>
 
+                {admin && <>
                     <button
                         onClick={() => {
                             editar()
@@ -64,16 +58,21 @@ function Item({ Nome, Descricao, local, Dono, Contato, Img, Imgtexto, admin, id,
                     </button>
 
                     <button onClick={() => fdel(id)} className={styles.btnadmin}>Apagar</button></>}
-            </div>
+            
 
-            <div className={styles.titulo} onClick={() => { setAberto(!aberto) }}>
+            <div className={styles.titulo} >
                 <label> {Nome} </label>
+                
 
 
                 {/*FRASE SAIBA MAIS PARA USUÁRIO GERAL*/}
                 {!admin ? <p className={aberto ? styles.pon : styles.poff}>
                     clique para saber mais </p> : null}
             </div>
+
+            </div>
+            </div>
+            
 
             {/*VERSÃO BOTÃO PARA USUÁRIO GERAL*/} 
             {!admin ?
@@ -87,7 +86,7 @@ function Item({ Nome, Descricao, local, Dono, Contato, Img, Imgtexto, admin, id,
 
             {/*VERSÃO FORMULÁRIO PARA EDITAR COMO ADIMINISTRADOR*/}
              {admin ?
-                <div className={editando ? styles.on : styles.off}> 
+                <div className={editando? styles.on : styles.off}> 
 
                      <form onSubmit={handleSubmit((dados) => fatualizar(dados, id))}>
                         <label> <strong>Nome: </strong></label>
@@ -120,8 +119,11 @@ function Item({ Nome, Descricao, local, Dono, Contato, Img, Imgtexto, admin, id,
                             setEditando(false)
                             }} type="submit" className={styles.btsave}>Salvar</button>
                     </form> 
+
+                        
                  </div>
                 : null} 
+                </div>
 
 
 
@@ -131,8 +133,8 @@ function Item({ Nome, Descricao, local, Dono, Contato, Img, Imgtexto, admin, id,
 
 
 
-
-        </div>
+        
+       </>
 
     )
 }

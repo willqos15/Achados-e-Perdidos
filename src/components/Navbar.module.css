@@ -1,124 +1,391 @@
-.principal { display: flex;
-justify-content: space-between;
-width: 100%;
-padding: 1% 5%;
-margin: auto;
-background-color: #1282A2;}
-
-hr{margin-top: 0px;}
-
-.titulo{
+.principal {
     display: flex;
-    justify-content: start;
+    position: fixed;
+    top: 0;
+    justify-content: space-between;
+    width: 100%;
+    max-height: 60px;
+    padding: 0px 35px 0px 0px;
+    margin: 0 auto;
+    background-color: #1282A2;
 }
 
-.titulo h1 {
+
+
+.titulo {
     display: flex;
+    flex-direction: row;
     align-items: center;
-    color:#fff;
-    transition: 0.5s;
-    font-size: 1.5rem;
+    cursor: pointer;
+
 }
 
-.titulo h1:hover {
+.titulo .h1ok {
+    padding-left: 20px;
+    max-width: 209px;
+    color: #fff;
+    transition: 0.5s;
+    font-size: 27px;
+
+}
+
+.titulo .h1ok:hover {
     transform: scale(1.2);
 }
 
 
 
-.itens{
+.itens {
     display: flex;
-    justify-content: flex-end;
+    justify-content: right;
     align-items: center;
 }
 
 .itens form {
-    margin: 0px 25px;
-    height: 2rem;}
 
-.itens ul{
+    width: 10px;
+    padding: 0px;
+    margin: 0px 0px 0px 0px;
+    height: 10px;
+}
+
+/* .itens ul{
     display: flex;
     gap: 30px;
     list-style: none;
     
-}
-
+} */
+/* 
 .itens ul li {
     border-radius: 20px;
-    padding: 0.2rem 20px;
+    padding: 5px 20px;
     color: #1282A2;
     background-color: #fff;
     transition: 0.5s;
     font-weight: bold;
-}
+    font-size: 20px;
 
-.link{
-    color:#011D4D;
-    text-decoration: none;
-    
-}
-.link:visited {
-    color:#011D4D;
-text-decoration: none;}
+} */
 
-.link:hover{
-    color: #fff;
-    text-decoration: none;
-}
 
-.itens ul li:hover{
+
+
+
+/* .itens ul li:hover{
     background-color: #034078;
     color: #fff;
     font-weight: bold;
     transform: scale(1.2);
-}
+} */
 
-.principal form{
+.principal form {
     display: flex;
+    align-items: center;
+    width: 100%;
 }
 
-.principal form input{ background-color:#E3DFDA;}
-.principal input {
+.caixabusca {
+    position: relative;
+    display: inline-block;
+}
+
+.iconebusca {
+    position: absolute;
+    left: 15px;
+    top: 8px;
+    font-size: 20px;
+    color: #bdc6c9;
+    pointer-events: none;
+}
+
+.principal form input {
+    display: flex;
+    background-color: #E3DFDA;
+    width: 100%;
+    transition: width 0.5s ease;
+
+
+}
+
+.principal form input::placeholder {
+    font-family: "WDXL Lubrifont JP N", sans-serif;
+    font-size: 15px;
+    color: #98a7ac
+}
+
+.inputbusca::-webkit-search-cancel-button {
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+
+
+
+
+
+
+.principal .inputbusca {
     border-radius: 20px;
-    padding: 10px;
+    padding: 10px 40px;
     border: 2px solid #1282A2;
 }
 
 
-@media (max-width: 640px){
 
-    .itens {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        padding: 0px;
-    }
 
-    @media (max-width: 400px) {.titulo h1{font-size: 1rem;}}
-    
 
-    .itens ul{
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        align-items: center;
-        margin: 0px;
-        padding: 0px;
-        gap: 10px;
+
+
+
+.contm {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 0px;
+    padding: 0px 0px 0px 0px;
+    background-color: #1282A2;
+    width: 70px;
+}
+
+
+.menubtn {
+    background-color: #1282A2;
+    width: 35px;
+    height: 35px;
+    border-radius: 10px;
+    padding: 0px;
+    margin: 0px auto;
+    cursor: pointer;
+    border-width: 2px;
+    border-color: #1282A2;
+    transition: border-width 1s ease;
+    transition: border-color 1s ease;
+    border-style: solid;
+}
+
+.menubtn:hover {
+    border-style: solid;
+    border-width: 4px;
+    border-color: #fff;
+    transition: border-width 1s ease;
+    transition: border-color 1s ease;
+    background-color: #1282A2;
+    transition: 0.3s;
+}
+
+.menubtn:hover span {
+    background-color: #fff;
+    transition: 0.5s;
+    padding: 1.5px 5px;
+}
+
+.menubtn span {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: #fff;
+    width: 20px;
+    padding: 2px 5px;
+    margin: 2px auto;
+    transition: 0.5s;
+}
+
+
+
+.moption {
+    position: absolute;
+    top: 47px;
+    padding-top: 0px;
+    border-radius: 0px 0px 5px 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #fff;
+    width: 90px;
+    max-height: 200px;
+    overflow: hidden;
+    transition: max-height 0.5s ease;
+}
+
+.moptioff {
+    position: absolute;
+    top: 47px;
+    padding-top: 0px;
+    border-radius: 0px 0px 5px 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0px;
+    background-color: #fff;
+    width: 90px;
+    max-height: 0px;
+    overflow: hidden;
+    transition: max-height 0.2s ease;
+}
+
+
+.moption span,
+.moptioff span,
+.link,
+.link:visited {
+    font-size: 20px;
+    color: #1282A2;
+    transition: 0.2s;
+    padding: 3px 0px;
+    text-decoration: none;
+    transition: 0.5s;
+    display: block;
+    width: 100%;
+    height: 30px;
+    background-color: #fff;
+}
+
+.moption span:hover,
+span:hover .link {
+    display: block;
+    height: 30px;
+    width: 100%;
+    color: #fff;
+    background-color: #1282A2;
+    transition: 0.5s;
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@media (max-width: 745px) {
+
+    .h1ok, .bh1 {
         
+        color: #fff;
+        padding-left: 10px;
+        height: 60px;
     }
 
-    .itens ul li {
-        font-size: 0.7rem;
-        width: 80px;
-        padding: 5px 0px;
-        margin: 10px 0px;
-        font-weight: bold;
-        color: #034078;
+    .titulo {
+        width: 300px;
+    padding-top: 20px;}
+
+    .bh1::after {
+        content: "Achados & Perdidos";
     }
 
-    
+  
+
+
+
+
+
+    @media (max-width: 580px) {
+        .caixabusca {
+            position: relative;
+            width: 10px;
+            margin-right: 5px;
+        }
+
+
+        .caixabusca .inputbusca {
+            padding: 10px 20px;
+            width: 20px;
+            transition: width 0s ease;
+        }
+
+
+        .digitando {
+            position: absolute;
+            right: -20px;
+            top: -20px;
+            border-radius: 20px;
+            padding: 10px 80px;
+            width: 20px;
+            border: 2px solid #1282A2;
+        }
+
+        .digicon {
+            display: none;
+        }
+
+
+
+        .digitando::-webkit-input-placeholder {
+            opacity: 1;
+        }
+
+        .inputbusca::-webkit-input-placeholder {
+            opacity: 0;
+        }
+
+
+        .iconebusca {
+            position: absolute;
+            left: 10px;
+            top: 8px;
+        }
+    }
+
+    .bh1 {  padding-left: 20px;
+            padding-top: 9px;
+            margin-top: 0px;
+            font-size: 27px;
+
+        }
+
+        .bh1::after {
+            content: "Achados & Perdidos";
+        }
+
+        @media(max-width: 485px) {
+            .bh1::after {
+            content: "A&P";
+        }
+        }
+
+    @media(max-width: 360px) {
+
+        .bh1 {
+            padding-top: 22px;
+            margin-top: 0px;
+            font-size: 20px;
+
+        }
+
+        .bh1::after {
+            content: "A&P";
+        }
+
+        .titulo {
+            max-width: 170px;
+            height: 60px;
+            padding-top: 0px;
+            margin-top: 0px;
+            
+        }
+
+        .titulo .h1ok {
+            font-size: 20px;
+            padding-top: 20px;
+            
+        }
+    }
+
+    .itens form {
+        margin: 0px 0px 0px 0px;
+        height: 10px;
+    }
+
 
 
 

@@ -1,11 +1,14 @@
 import Item from '../components/Item'
-import { useState } from 'react'
 import { useNavigate } from 'react-router'
 import styles from "./gerenciar.module.css"
 import { DeletaItem, EditarItem, ListarItem } from '../hookapi/fetchItem'
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query'
+import { useState, useContext } from 'react'
+import { ContextNavbar } from '../ContextNavbar'
 
 function Gerenciar () {
+
+  const {adm,setAdm} = useContext (ContextNavbar)
 
   const{data,isLoading,error} = useQuery({
     queryKey: ["itens"], queryFn: ListarItem
@@ -16,11 +19,8 @@ function Gerenciar () {
 
   const navigate = useNavigate()
 
-    const [itens,setItens] = useState([]) 
 
-
-
-    function paginacriar(){ navigate('/cadastro')}
+    
 
     const queryClient = useQueryClient() 
     const mutationUpdate = useMutation(
@@ -60,13 +60,7 @@ function Gerenciar () {
         // .catch(erro=>console.log("ERRO"+erro))
     }
 
-    function sair(){
-      //axios.post(`${import.meta.env.VITE_URLAPI}/logout`)
-      //.then(()=>{
-        localStorage.removeItem("token")
-        navigate('/')//})
-      //.catch(erro=>console.log("ERRO: ", erro))
-    }
+
     
     //   useEffect(()=>{
     //   axios.get("http://localhost:3000/perdidos")
@@ -84,17 +78,10 @@ function Gerenciar () {
       <div className={styles.botoesger}>
 
     
-        <button onClick={paginacriar} className={styles.btncriar}>
-          Cadastrar ítem
-        </button>
+   
 
-        <button className={styles.btnreport}>
-          Reportar problema
-        </button>
 
-        <button onClick={sair} className={styles.btnlogout}>
-          Sair da Conta
-        </button>
+  
       </div>
     <div className="conteiner">
 

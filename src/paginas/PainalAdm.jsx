@@ -1,13 +1,15 @@
 import axios from "axios"
 import {useNavigate } from "react-router"
 import { useForm } from "react-hook-form"
-import { useEffect, useState } from "react"
 import styles from './PainelAdm.module.css'
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query'
 import { Loginadm } from "../hookapi/fetchItem"
+import { useContext, useState, useEffect } from "react"
+import { ContextNavbar } from "../ContextNavbar"
 
 function PainelAdm (){
     
+     const {adm,setAdm} = useContext(ContextNavbar)
     const[msglogin,setMsgLogin] = useState("")
 
     const {handleSubmit, watch, register, formState: {errors}} = useForm({mode: "onChange"})
@@ -21,6 +23,7 @@ function PainelAdm (){
             onSuccess: (data)=>{
                 const token = data.token
                 localStorage.setItem("token", token)
+                setAdm(true)
                 navigate('/gerenciar')
             }
              }
@@ -43,10 +46,10 @@ function PainelAdm (){
     return(
         <div className={styles.loginmain}>
 
-            {mutationLogin.isLoading && <p>Carregando...</p>}
-            {mutationLogin.isError && <p>Erro...</p>}
+            {mutationLogin.isLoading === true && <p className={styles.plogin}>Carregando...</p>}
+           
 
-            {!mutationLogin.isLoading && <>
+        {!mutationLogin.isLoading && <>
         <h2>Área Restrita</h2>
         <form onSubmit={handleSubmit(login)}>
 
@@ -62,7 +65,7 @@ function PainelAdm (){
 
         {(errors.email || errors.password) && <p className={styles.plogin}>Campo obrigatório</p>}
         {msglogin === "erro" && <p className={styles.plogin}> Login ou Senha incorreto!</p>}
-        
+        {mutationLogin.isError && <p className={styles.plogin}>Login ou Senha incorreto!</p>}
         <button type="submit" className={styles.btnlogin}> Enviar </button>
         
         </form>

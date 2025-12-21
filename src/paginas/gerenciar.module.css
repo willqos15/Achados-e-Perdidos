@@ -1,7 +1,6 @@
 .botoesger{
     display: flex;
     justify-content: right;
-    
     padding-bottom: 10px;
     padding-right: 10px;
 }
@@ -17,10 +16,11 @@ padding: 0px 20px;}
     font-weight: bold;
     color: #fff;
     border-radius: 0px 0px 10px 10px;
-    font-size: 1rem;
+    font-size: 15px;
     background-color: #1282A2; 
     border: 3px solid #1282A2; 
     transition: 0.5s;
+    cursor: pointer;
 }
 
 .btncriar:hover{  
@@ -58,12 +58,12 @@ color: rgb(147, 28, 28);}
 }
 
 .btnlogout, .btncriar, .btnreport{
-     font-size: 0.7rem;
+     font-size: 15px;
 }
 
 @media (max-width: 400px){
 .btnlogout, .btncriar, .btnreport{
-     font-size: 0.5rem;
+     font-size: 10px;
 }
 }
 

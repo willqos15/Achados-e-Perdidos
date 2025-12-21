@@ -4,7 +4,7 @@
     background-color: #1282A2; 
     border-radius: 20px;
     padding: 5px 20px;
-    margin-top: 30px;
+    margin-top: 80px;
     color: #fff;
     max-width: 400px;
     min-width: 300px;
@@ -15,16 +15,17 @@
 
 .loginmain label {
     font-weight: bold;
-    font-size: 1em;
+    font-size: 20px;
     margin: 0px 5px;
 }
 
 .loginmain input {
     padding: 10px;
     margin-top: 10px;
-    border-radius: 20px;
+    border-radius: 10px;
     width: 70%;
     border: 0;
+    background-color: #E3DFDA;;
 }
 
 .pcampo {margin-top: 5px;
@@ -33,22 +34,29 @@ color: rgb(255, 221, 0);
 font-weight: bold;}
 
 .plogin {margin: auto;
+font-size: 25px;
 padding: 10px 0px 0px 0px;
 color: rgb(255, 221, 0);
 font-weight: bold;}
 
+.loginmain h2 {
+    margin: 10px 0px 0px 0px;
+    font-size: 40px;
+}
+
 .btnlogin{
-font-size: 15px;
+ font-family: "WDXL Lubrifont JP N", sans-serif;
+font-size: 20px;
 font-weight: bold;
-padding: 10px 20px;
-width: 100px;
+padding: 5px 10px;
 align-self: center;
-border-radius: 20px;
-margin: 10px 0px 5px 0px;
+border-radius: 10px;
+margin: 20px 0px 5px 0px;
 background-color: #fff;
 color: #034078;
 transition: 0.5s;
-border: 0
+border: 0;
+cursor: pointer;
 
 }
 
@@ -59,7 +67,8 @@ color:#fff;
 }
 
 @media (max-width:435px){
-    .loginmain{width: 300px;}
+    .loginmain{width: 100vw;
+    border-radius: 0px;}
 
     
 

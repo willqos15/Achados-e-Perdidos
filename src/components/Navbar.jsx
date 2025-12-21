@@ -1,86 +1,175 @@
 import styles from "./Navbar.module.css"
 import { Link } from "react-router-dom";
-import { useContext, useState} from "react";
+import { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom"
 import { ContextNavbar } from "../ContextNavbar";
+import { FaSearch } from "react-icons/fa";
 
 
 
-function Navbar () {
+function Navbar() {
 
-        
-        const navigate = useNavigate()
-        const {itens,setItens,barraBusca,setBarraBusca} = useContext(ContextNavbar)
 
-      
-  function pesquisar(e){
-   e.preventDefault()
-    
+  const navigate = useNavigate()
+  const { itens, setItens, barraBusca, setBarraBusca, adm, setAdm } = useContext(ContextNavbar)
+  const [menu, setMenu] = useState(false)
+  const [wbarra, setWBarra] = useState("")
+
+  useEffect(() => {
+
+
+  }
+    , [barraBusca])
+
+  function pesquisar(e) {
+    e.preventDefault()
+
     //verifica se existe algo no barra busca retirando os espaços
-    if(!barraBusca.trim()){return
+    if (!barraBusca.trim()) {
+      return
     }
-    
-    axios.get(`${import.meta.env.VITE_URLAPI}/busca/${barraBusca.trim()}`)
-        .then((resposta)=>{
-          setItens(resposta.data)
-          navigate('/busca')
-          
 
-        })
-        .catch(erro=>{
-          if(erro.status === 404) {
-            navigate('/busca')
-            setItens(null)
-           }
-          else{setItens(null)}
+    axios.get(`${import.meta.env.VITE_URLAPI}/busca/${barraBusca.trim()}`)
+      .then((resposta) => {
+        setItens(resposta.data)
+        navigate('/busca')
+
+
+      })
+      .catch(erro => {
+        if (erro.status === 404) {
+          navigate('/busca')
+          setItens(null)
         }
-      
+        else { setItens(null) }
+      }
+
       )
   }
-      
 
 
-  function telaadm(){
-     const token = localStorage.getItem("token")
-     if (!token) return navigate('./painel')
-    axios.get(`${import.meta.env.VITE_URLAPI}/testelogin`, 
-      {headers: {authorization: `Bearer ${token}`}})
-    .then(()=> navigate('/gerenciar'))
-    .catch(()=> navigate('/painel'))
-    
+
+  function telaadm() {
+    const token = localStorage.getItem("token")
+    if (!token) return navigate('./painel')
+    axios.get(`${import.meta.env.VITE_URLAPI}/testelogin`,
+      { headers: { authorization: `Bearer ${token}` } })
+      .then(() => {
+        navigate('/gerenciar')
+        setAdm(true)
+      })
+      .catch(() => {
+        navigate('/painel')
+        setAdm(false)
+      })
+
   }
-        
-      
-    
 
-    return(
-      <>
+  function inputpesquisa(valor) {
+    setBarraBusca(valor.target.value)
 
-    <div className={styles.principal}>
+  }
 
-      <div className={styles.titulo}>
-        <h1>Achados & Perdidos</h1>
-      </div>
+  function tampasquisa() {
+    const barra = document.getElementsByName("pesquisa")[0]
+    const largura = barra.getBoundingClientRect().width
 
-      <div className={styles.itens}>
-        <ul>
-          <Link to="/" className={styles.link}> <li> Início </li></Link>
-          <li onClick={telaadm} className={styles.link}> Gerenciar </li>
-       
-          
-        </ul>
-           <form onSubmit={pesquisar}>
-          <input onChange={valor=> setBarraBusca(valor.target.value)} name="pesquisa" type="search" placeholder=" Pesquise aqui" />
+    if (largura < 200) {
+      setWBarra("on")
+    }
+  }
+
+  function sair() {
+    localStorage.removeItem("token")
+    navigate('/painel')
+    setAdm(false)
+  }
+
+
+  function paginacriar() { navigate('/cadastro') }
+
+  function paginainicial() { navigate('/') }
+
+
+
+  return (
+    <>
+
+      <header className={styles.principal}>
+
+        <div onClick={paginainicial} className={styles.titulo}>
+          {wbarra === "on" ?
+          <h1 className={styles.bh1}></h1>
+          : <h1 className={styles.h1ok}>Achados & Perdidos</h1>}
+        </div>
+
+        <div className={styles.itens}>
+
+          <form onSubmit={pesquisar}>
+            <div className={styles.caixabusca}>
+              <FaSearch className={wbarra === "on" ? styles.digicon : styles.iconebusca} />
+
+              <input
+                onFocus={tampasquisa}
+                onBlur={() => setWBarra("")}
+                onChange={inputpesquisa}
+                className={wbarra === "on" ? styles.digitando : styles.inputbusca}
+                name="pesquisa" type="search" placeholder="Pesquisar" />
+            </div>
           </form>
-      </div>
-      
-      
-    </div>
-  
+
+          <div className={styles.contm}>
+
+            <button onClick={() => { setMenu(!menu) }}
+              onBlur={()=>{
+                setTimeout(() => {
+                  setMenu(!menu)
+                }, 100);
+
+              }}
+              className={styles.menubtn}>
+              <span></span>
+              <span></span>
+              <span></span>
+            </button>
+
+
+
+            <nav className={menu ? styles.moption : styles.moptioff}>
+              <span><Link to="/" className={styles.link}>Inicio</Link></span>
+              <span onClick={telaadm}> Gerenciar </span>
+              {adm && <>
+              <span onClick={paginacriar}>Cadastrar ítem</span>
+              <span onClick={sair}> Sair</span>
+              </>}
+            </nav>
+
+
+          </div>
+
+
+
+
+          {/* <ul className={styles.mopcoes}>
+            <li>
+               <Link to="/" className={styles.link}> <li> Início </li></Link>
+            </li>
+            <li>
+              <li onClick={telaadm} className={styles.link}> Gerenciar </li>
+            </li>
+
+          </ul> */}
+
+        </div>
+
+
+      </header>
+
 
     </>
-    
-    )}
+
+  )
+}
 
 export default Navbar

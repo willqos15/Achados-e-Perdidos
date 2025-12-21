@@ -1,13 +1,14 @@
 .item {
     display: inline-flex;
     flex-direction: column;
-    border: 1px solid #034078;
+    border: 0px solid #034078;
     background-color: #E3DFDA;
     border-radius: 20px 20px 0px 0px;
     transition: 0.5s;
-    width: 15em;
-    max-width: 15em;
-    margin: 10px;
+    width: 200px;
+    max-width:400px;
+    font-size: 20px;
+    margin: 10px 10px;
 }
 
 .item input {
@@ -28,6 +29,7 @@
     background-color: #1282A2;
     border-radius: 20px 20px 0px 0px;
     transition: 0.5s;
+    padding-top: 1px;
 
 }
 
@@ -41,7 +43,7 @@
 width: 150px;
 justify-content: center;
 align-items: center;
-margin: 20px auto;}
+margin: 30px auto;}
 
 .item img {
    
@@ -59,13 +61,16 @@ margin: 20px auto;}
 }
 
 .item img:hover {
-    border-radius: 20px;
+    border-radius: 5px;
     transform: scale(1.2);
     background-color: #fff;
     object-fit: contain;
 }
 
-
+.card{
+    cursor: pointer;
+    user-select: none;
+}
 
 .titulo {
     padding: 10px;
@@ -97,6 +102,8 @@ margin: 20px auto;}
     border: 0px;
     font-weight: bold;
     transition: 0.5s;
+    cursor: pointer;
+    font-family: "WDXL Lubrifont JP N", sans-serif;
 }
 
 .btnadmin:hover {
@@ -116,6 +123,8 @@ margin: 20px auto;}
     border-radius: 10px;
     border: 0px;
     transition: 0.5s;
+    cursor: pointer;
+    font-family: "WDXL Lubrifont JP N", sans-serif;
 }
 
 .btsave:hover {
