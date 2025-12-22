@@ -396,6 +396,8 @@
   .bh1::after {
         content: "A&P";
     }
+
+    .titulo .h1ok{font-size: 0.8rem;}
 }
 
 
@@ -413,7 +415,7 @@
 
      .h1ok {
         padding-left: 10px;
-        font-size: 0.7rem;
+       
     }
 
    
