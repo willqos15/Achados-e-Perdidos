@@ -30,6 +30,7 @@
     transition: 0.5s;
     font-size: 1em;
     flex-shrink: 1;
+    min-width: 0px;
     
 }
 
