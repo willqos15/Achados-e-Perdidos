@@ -70,7 +70,9 @@ function Navbar() {
     const barra = document.getElementsByName("pesquisa")[0]
     const largura = barra.getBoundingClientRect().width
 
-    if (largura < 200) {
+    console.log(largura)
+    //mesmo valor do .principal form input{min-width: 90px;}
+    if (largura <= 90) {
       setWBarra("on")
     }
   }
@@ -130,10 +132,10 @@ function Navbar() {
 
             <nav className={menu ? styles.moption : styles.moptioff}>
               <span><Link to="/" className={styles.link}>Inicio</Link></span>
-              <span onClick={telaadm}> Gerenciar </span>
+              <span onClick={telaadm}>Gerenciar</span>
               {adm && <>
-              <span onClick={paginacriar}>Cadastrar ítem</span>
-              <span onClick={sair}> Sair</span>
+              <span onClick={paginacriar}>Cadastrar</span>
+              <span onClick={sair}>Sair</span>
               </>}
             </nav>
 

@@ -20,17 +20,16 @@
     flex-direction: row;
     align-items: center;
     cursor: pointer;
+    white-space: nowrap;
+    max-width: 100%;
 }
-
-.titulo {
-    max-width: 209px;
-}
-
+.bh1 {font-size: 1em;}
 .h1ok {
-    padding-left: 20px;
+    padding: 0px 10px 0px 20px;
     color: #fff;
     transition: 0.5s;
-    font-size: 27px;
+    font-size: 1em;
+    
 }
 
 .titulo .h1ok:hover {
@@ -59,6 +58,7 @@
 .caixabusca {
     position: relative;
     display: inline-block;
+    width: 100%;
 }
 
 .iconebusca {
@@ -70,10 +70,16 @@
     pointer-events: none;
 }
 
+  .digicon {
+        display: initial;
+    }
+
 .principal form input {
     display: flex;
     background-color: #E3DFDA;
     width: 100%;
+    min-width: 90px;
+    
     transition: width 0.5s ease;
 
 
@@ -97,13 +103,17 @@
 
 .moption,
 .moptioff {
-    width: 200px;
+    display: flex;
+    justify-content: right;
+    white-space: nowrap;
+    width: 100%;
     padding: 0px 10px;
 }
 
 .moption,
 .moptioff,
 .link {
+    transition: 0.2s;
     display: flex;
     gap: 10px;
     font-size: 25px;
@@ -115,11 +125,14 @@
 .moption span:hover,
 .moptioff span:hover,
 .link:hover {
+    transition: 0.4s;
     display: flex;
     gap: 20px;
     font-size: 25px;
-    color: #fff;
-    text-decoration: underline;
+    color: #ffffff;
+     transform: translateY(2px);
+     text-shadow: 0px 0px 1px #fff;
+     text-decoration: overline;
 }
 
 
@@ -127,8 +140,9 @@
 
 .principal .inputbusca {
     border-radius: 20px;
-    padding: 10px 40px;
+    padding: 10px 10px 10px 40px;
     border: 2px solid #1282A2;
+    
 }
 
 
@@ -152,7 +166,7 @@
 
 
 
-@media (max-width: 745px) {
+@media (max-width: 740px) {
 
     .moption,
     .moptioff {
@@ -293,9 +307,10 @@
         display: block;
         height: 30px;
         width: 100%;
-        color: #1282A2;
+        color: #034078;
         transition: 0.5s;
-        text-decoration: underline;
+        transform: translateY(-2px);
+        text-decoration: none;
 
     }
 }
@@ -314,30 +329,34 @@
 
 
 
-@media (max-width: 580px) {
+@media (max-width: 480px) {
     .caixabusca {
         position: relative;
-        width: 10px;
+        max-width: 20px;
         margin-right: 5px;
     }
 
 
     .caixabusca .inputbusca {
         padding: 10px 20px;
-        width: 20px;
+        min-width: 100%;
         transition: width 0s ease;
+        
     }
 
-
-    .digitando {
+    .h1ok{
+        font-size: 1em;
+    }
+    .caixabusca .digitando {
+        min-width: 230px;
         position: absolute;
-        right: -30px;
+        right: 0px;
         top: -20px;
         border-radius: 20px;
         padding: 10px 10px;
-        min-width: 170px;
-        min-height: 40px;
         border: 2px solid #1282A2;
+        
+       
     }
 
 
@@ -364,27 +383,35 @@
 
 .bh1 {
     padding-left: 20px;
-    font-size: 27px;
+    font-size: 1em;
 
 }
 
 .bh1::after {
     content: "Achados & Perdidos";
 }
-}
 
-
-
-@media(max-width: 485px) {
-    .bh1::after {
+  .bh1::after {
         content: "A&P";
     }
 }
 
+
+@media (max-width: 410px) {
+     .caixabusca .digitando {
+        min-width: 180px;}
+    
+}
+
+
 @media(max-width: 360px) {
 
+     .caixabusca .digitando {
+        min-width: 150px;}
+
      .h1ok {
-        padding-left: 7px;
+        padding-left: 10px;
+        font-size: 0.7em;
     }
 
    
@@ -401,3 +428,9 @@
 }
 
 
+
+@media (max-width: 330px) {
+     .caixabusca .digitando {
+        min-width: 130px;}
+    
+}
