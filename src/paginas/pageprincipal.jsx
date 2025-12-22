@@ -13,8 +13,8 @@ function PagePrincipal (){
         queryFn: ListarItem
       })
 
-      if (isLoading) return <p>Carregando...</p>
-      if (error) return <p>Erro ao carregar itens</p>
+      if (isLoading) return <p className={styles.pavisook}>Carregando...</p>
+      if (error) return <p className={styles.paviso}>Erro ao carregar itens</p>
 
 
     //  const [itens,setItens] = useState([]) 
@@ -34,7 +34,7 @@ function PagePrincipal (){
     <div className={styles.container}>
 
     {data.length<=0 &&
-    <p className={styles.paviso}>Nenhum item cadastrado! </p>
+    <p className={styles.pavisook}>Nenhum item cadastrado! </p>
     }
 
     {data?.map(x=> (

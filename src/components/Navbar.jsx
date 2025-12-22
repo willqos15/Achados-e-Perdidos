@@ -16,12 +16,7 @@ function Navbar() {
   const [menu, setMenu] = useState(false)
   const [wbarra, setWBarra] = useState("")
 
-  useEffect(() => {
-
-
-  }
-    , [barraBusca])
-
+ 
   function pesquisar(e) {
     e.preventDefault()
 
@@ -120,21 +115,18 @@ function Navbar() {
           </form>
 
           <div className={styles.contm}>
+            <button onClick={() => { 
+              if (!menu) {setMenu(true)
+                setTimeout(()=>{
+              setMenu(false)},6000)
+              }
 
-            <button onClick={() => { setMenu(!menu) }}
-              onBlur={()=>{
-                setTimeout(() => {
-                  setMenu(!menu)
-                }, 100);
-
-              }}
+              if (menu){setMenu(false)}
+            }}
+              
               className={styles.menubtn}>
-              <span></span>
-              <span></span>
-              <span></span>
+              <span></span><span></span><span></span>
             </button>
-
-
 
             <nav className={menu ? styles.moption : styles.moptioff}>
               <span><Link to="/" className={styles.link}>Inicio</Link></span>
@@ -144,7 +136,6 @@ function Navbar() {
               <span onClick={sair}> Sair</span>
               </>}
             </nav>
-
 
           </div>
 

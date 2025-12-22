@@ -4,6 +4,12 @@
     font-weight: bold;
 color: rgb(147, 28, 28);}
 
+.pavisook {
+    padding-top: 40px;
+    font-size: 20px;
+    font-weight: bold;
+color: #034078}
+
 .container{
   display: inline-block;
   grid-template-columns: 100px 1fr;
