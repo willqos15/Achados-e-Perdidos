@@ -122,7 +122,8 @@ clearErrors - limpa erros
           {errors.proprietario && <p>Campo obrigatório</p>}
 
           <label> Contato (Whatsapp):</label>
-          <input {...register("contato", { required: "Campo obrigatório", minLength: { value: 11, message: "O número precisa ter no mínimo 10 digítos. Não esqueça o DDD." } })} type="tel" placeholder='(DDD) 90000 0000' onFocus={Scrollar} />
+          
+          <input {...register("contato", { required: "Campo obrigatório", minLength: { value: 11, message: "O número precisa ter no mínimo 10 digítos. Não esqueça o DDD." } })} type="tel" placeholder='(DDD) 90000 0000' onFocus={Scrollar} inputMode='numeric'/>
           {errors.contato && <p>{errors.contato.message}</p>}
 
           <input type="submit" value="Enviar" className={styles.botaoenviar} />
