@@ -23,12 +23,12 @@
     white-space: nowrap;
     max-width: 100%;
 }
-.bh1 {font-size: 1em;}
+.bh1 {font-size: 1rem;}
 .h1ok {
     padding: 0px 10px 0px 20px;
     color: #fff;
     transition: 0.5s;
-    font-size: 1em;
+    font-size: 1rem;
     flex-shrink: 1;
     min-width: 0px;
     
@@ -347,7 +347,7 @@
     }
 
     .h1ok{
-        font-size: 1em;
+        font-size: 1rem;
     }
     .caixabusca .digitando {
         min-width: 230px;
@@ -385,7 +385,7 @@
 
 .bh1 {
     padding-left: 20px;
-    font-size: 1em;
+    font-size: 1rem;
 
 }
 
@@ -413,7 +413,7 @@
 
      .h1ok {
         padding-left: 10px;
-        font-size: 0.7em;
+        font-size: 0.7rem;
     }
 
    
