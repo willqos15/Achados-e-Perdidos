@@ -32,9 +32,19 @@ input[type="submit"],
 input[type="tel"],
 input[type="text"],
 textarea {
-  font-size: 16px;
   font-family: "WDXL Lubrifont JP N", sans-serif;
+}
+
+
+input[type="email"],
+input[type="number"],
+input[type="password"],
+input[type="search"],
+input[type="tel"],
+input[type="text"]{
+  font-size: 16px;
   color: #034078;
+
 }
 
 @keyframes logo-spin {
