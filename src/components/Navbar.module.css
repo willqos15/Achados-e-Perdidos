@@ -241,7 +241,7 @@
         height: 35px;
         border-radius: 10px;
         padding: 0px;
-        margin: 0px 0px 0px 5px;
+        margin: 0px 0px 0px 0px;
         cursor: pointer;
         border-width: 2px;
         border-color: #1282A2;
@@ -389,7 +389,9 @@
         
     }
 
-
+    .caixabusca{
+        margin-right: 10px;
+    }
     .caixabusca .inputbusca {
         padding: 10px 20px;
         min-width: 40px;
