@@ -135,7 +135,8 @@ function Navbar() {
               <span onClick={telaadm}>Gerenciar</span>
               {adm && <>
               <span onClick={paginacriar}>Cadastrar</span>
-              <span onClick={sair}>Sair</span>
+              <span onClick={sair}
+              className={styles.logout}>Sair</span>
               </>}
             </nav>
 

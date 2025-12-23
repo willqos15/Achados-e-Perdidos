@@ -1,8 +1,9 @@
 import styles from '../components/formulario.module.css'
-import { useForm } from 'react-hook-form'
+import { Controller, useForm } from 'react-hook-form'
 import axios from 'axios'
 import { use, useRef, useState } from 'react'
 
+import { PatternFormat } from 'react-number-format'
 
 function Formulario({ funcao }) {
 
@@ -11,9 +12,9 @@ function Formulario({ funcao }) {
   const [msgfoto, setMsgFoto] = useState("")
   const [nomearq, setNomeArq] = useState()
 
-  function errofotos(){
+  function errofotos() {
 
-    if (!foto.current) {return setMsgFoto("erro")}
+    if (!foto.current) { return setMsgFoto("erro") }
     setMsgFoto("")
   }
 
@@ -51,7 +52,7 @@ function Formulario({ funcao }) {
 
 
 
-  const { register, handleSubmit, formState: { errors }, reset } = useForm({ mode: "onChange" })
+  const { register, control,handleSubmit, formState: { errors }, reset } = useForm({ mode: "onChange" })
 
   /*
 register - linka o input ao React Hook Form (essencial)
@@ -122,8 +123,38 @@ clearErrors - limpa erros
           {errors.proprietario && <p>Campo obrigatório</p>}
 
           <label> Contato (Whatsapp):</label>
-          
-          <input {...register("contato", { required: "Campo obrigatório", minLength: { value: 11, message: "O número precisa ter no mínimo 10 digítos. Não esqueça o DDD." } })} type="tel" placeholder='(DDD) 90000 0000' onFocus={Scrollar} inputMode='numeric'/>
+
+
+          <Controller
+            name="contato"
+            control={control}
+            
+            rules={{ required: "Campo obrigatório",
+              validate: valor=>{
+                //uso de REGEX /D retira tudo que não for número e g para aplicat a todos carecteres(global) e substitui por vazio ''
+                const tirasimbolo = valor.replace(/\D/g,'')
+                return tirasimbolo.length === 13 || "O número precisa ter 11 dígitos"
+              }}}
+            render={({ field }) => (
+
+              <PatternFormat
+                {...field}
+                format='+55 (##) # ####-####'
+                placeholder='(XX) X XXXX-XXXX'
+                onFocus={Scrollar}
+                inputMode='numeric'
+                onValueChange={(valor)=>{
+                  field.onChange(valor.value)
+                  
+                }}
+              />
+
+            )}
+          />
+
+
+          {/* <input {...register("contato", { required: "Campo obrigatório", minLength: { value: 11, message: "O número precisa ter no mínimo 10 digítos. Não esqueça o DDD." } })} type="tel" placeholder='(DDD) 90000 0000' onFocus={Scrollar} inputMode='numeric' /> */}
+
           {errors.contato && <p>{errors.contato.message}</p>}
 
           <input type="submit" value="Enviar" className={styles.botaoenviar} />

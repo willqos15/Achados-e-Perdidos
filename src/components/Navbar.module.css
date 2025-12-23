@@ -23,7 +23,11 @@
     white-space: nowrap;
     max-width: 100%;
 }
-.bh1 {font-size: 1rem;}
+
+.bh1 {
+    font-size: 1rem;
+}
+
 .h1ok {
     padding: 0px 10px 0px 20px;
     color: #fff;
@@ -31,17 +35,20 @@
     font-size: 1rem;
     flex-shrink: 1;
     min-width: 0px;
-    
+
 }
 
 .titulo .h1ok:hover {
-    transform: scale(1.03);
+    transform: scale(1.-09);
+    text-shadow: 0px 0px 20px #ffffff;
 }
 
 .itens {
     display: flex;
     justify-content: right;
     align-items: center;
+    flex-shrink: 0;
+    
 }
 
 .itens form {
@@ -66,22 +73,22 @@
 .iconebusca {
     position: absolute;
     left: 15px;
-    top: 8px;
+    top: 12px;
     font-size: 20px;
     color: #bdc6c9;
     pointer-events: none;
 }
 
-  .digicon {
-        display: initial;
-    }
+.digicon {
+    display: initial;
+}
 
 .principal form input {
     display: flex;
     background-color: #E3DFDA;
     width: 100%;
     min-width: 90px;
-    
+
     transition: width 0.5s ease;
 
 
@@ -115,13 +122,14 @@
 .moption,
 .moptioff,
 .link {
-    transition: 0.2s;
+    transition: 0.4s;
     display: flex;
     gap: 10px;
     font-size: 25px;
     color: #fff;
     text-decoration: none;
     cursor: pointer;
+    padding: 0px 5px;
 }
 
 .moption span:hover,
@@ -129,22 +137,39 @@
 .link:hover {
     transition: 0.4s;
     display: flex;
-    gap: 20px;
+    gap: 10px;
     font-size: 25px;
-    color: #ffffff;
-     transform: translateY(2px);
-     text-shadow: 0px 0px 1px #fff;
-     text-decoration: overline;
+    color: #d0e6ff;
+    text-shadow: 0px 0px 20px #00c8ff;
+    transform: scaleX(1.05);
+    
+
 }
 
+.moption .logout, .moptioff .logout{
+     transition: 0.4s;
+    display: flex;
+    gap: 10px;
+    font-size: 25px;
+    color: #fff;
+    text-decoration: none;
+    cursor: pointer;
+    padding: 0px 5px;
+    
+}
 
+.moption .logout:hover, .moptioff .logout:hover{
+    color: rgb(255, 177, 177);
+    text-shadow: 0px 0px 5px #ff0000;
+    transform: scaleX(1.09);
+}
 
 
 .principal .inputbusca {
     border-radius: 20px;
     padding: 10px 10px 10px 40px;
     border: 2px solid #1282A2;
-    
+
 }
 
 
@@ -206,7 +231,6 @@
         align-items: center;
         margin-top: 0px;
         padding: 0px 0px 0px 0px;
-        background-color: #1282A2;
         width: 70px;
     }
 
@@ -290,7 +314,9 @@
     .moption span,
     .moptioff span,
     .link,
-    .link:visited {
+    .link:visited,
+    .moption .logout,
+    .moptioff .logout  {
         font-size: 20px;
         color: #1282A2;
         transition: 0.2s;
@@ -301,18 +327,39 @@
         width: 100%;
         height: 30px;
         background-color: #fff;
+        
     }
 
     .moption span:hover,
-    span:hover .link {
+    span:hover .link{
         font-size: 20px;
         display: block;
         height: 30px;
         width: 100%;
         color: #034078;
+        text-shadow: 0px 0px 20px #48d7ff;
         transition: 0.5s;
-        transform: translateY(-2px);
-        text-decoration: none;
+        transform: none;
+        text-decoration: none; 
+
+    }
+
+    .moption .logout,
+    .moptioff .logout{
+        color: #d75f5f;
+    }
+
+     .moption .logout:hover,
+    .moptioff .logout:hover{
+        font-size: 20px;
+        display: block;
+        height: 30px;
+        width: 100%;
+        color: #780303;
+        text-shadow: 0px 0px 20px rgb(255, 0, 0);;
+        transition: 0.5s;
+        transform: none;
+        text-decoration: none; 
 
     }
 }
@@ -336,19 +383,22 @@
         position: relative;
         max-width: 20px;
         margin-right: 5px;
+        
     }
 
 
     .caixabusca .inputbusca {
         padding: 10px 20px;
-        min-width: 100%;
+        min-width: 40px;
         transition: width 0s ease;
         
+
     }
 
-    .h1ok{
+    .h1ok {
         font-size: 1rem;
     }
+
     .caixabusca .digitando {
         min-width: 230px;
         position: absolute;
@@ -357,8 +407,8 @@
         border-radius: 20px;
         padding: 10px 10px;
         border: 2px solid #1282A2;
-        
-       
+
+
     }
 
 
@@ -383,42 +433,46 @@
         top: 8px;
     }
 
-.bh1 {
-    padding-left: 20px;
-    font-size: 1rem;
+    .bh1 {
+        padding-left: 20px;
+        font-size: 1rem;
 
-}
+    }
 
-.bh1::after {
-    content: "Achados & Perdidos";
-}
+    .bh1::after {
+        content: "Achados & Perdidos";
+    }
 
-  .bh1::after {
+    .bh1::after {
         content: "A&P";
     }
 
-    .titulo .h1ok{font-size: 0.7rem;}
+    .titulo .h1ok {
+        font-size: 0.7rem;
+    }
 }
 
 
 @media (max-width: 410px) {
-     .caixabusca .digitando {
-        min-width: 180px;}
-    
+    .caixabusca .digitando {
+        min-width: 180px;
+    }
+
 }
 
 
 @media(max-width: 360px) {
 
-     .caixabusca .digitando {
-        min-width: 150px;}
-
-     .h1ok {
-        padding-left: 10px;
-       
+    .caixabusca .digitando {
+        min-width: 150px;
     }
 
-   
+    .h1ok {
+        padding-left: 10px;
+
+    }
+
+
 
     .bh1::after {
         content: "A&P";
@@ -434,7 +488,8 @@
 
 
 @media (max-width: 330px) {
-     .caixabusca .digitando {
-        min-width: 130px;}
-    
+    .caixabusca .digitando {
+        min-width: 130px;
+    }
+
 }

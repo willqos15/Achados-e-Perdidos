@@ -33,6 +33,8 @@ input[type="tel"],
 input[type="text"],
 textarea {
   font-size: 16px;
+  font-family: "WDXL Lubrifont JP N", sans-serif;
+  color: #034078;
 }
 
 @keyframes logo-spin {
