@@ -22,8 +22,6 @@ Blue Jungle:
 #63372C
 
 
-VERCEL 
-CLOUDFARE PARA HOSPEDAGEM
  */
 
 function App() {

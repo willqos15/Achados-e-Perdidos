@@ -6,11 +6,13 @@ import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query'
 import { Loginadm } from "../hookapi/fetchItem"
 import { useContext, useState, useEffect } from "react"
 import { ContextNavbar } from "../ContextNavbar"
+import loading from '../img/load.gif'
 
 function PainelAdm (){
     
      const {adm,setAdm} = useContext(ContextNavbar)
     const[msglogin,setMsgLogin] = useState("")
+    const[estlogin,setEstLogin] = useState ("deslogado")
 
     const {handleSubmit, watch, register, formState: {errors}} = useForm({mode: "onChange"})
     const navigate = useNavigate()
@@ -24,12 +26,14 @@ function PainelAdm (){
                 const token = data.token
                 localStorage.setItem("token", token)
                 setAdm(true)
+                setEstLogin("logado")
                 navigate('/gerenciar')
             }
              }
         )
 
     function login(dados){
+        setEstLogin("carregando")
         mutationLogin.mutate(dados)
     }
 
@@ -44,12 +48,15 @@ function PainelAdm (){
         },[msglogin])
 
     return(
+        <>
+        {estlogin === "carregando" && 
+            <img src={loading}
+        className={styles.imgload}/>}
+
+        {estlogin !== "carregando" &&
+        <>
         <div className={styles.loginmain}>
-
-            {mutationLogin.isLoading === true && <p className={styles.plogin}>Carregando...</p>}
-           
-
-        {!mutationLogin.isLoading && <>
+        
         <h2>Área Restrita</h2>
         <form onSubmit={handleSubmit(login)}>
 
@@ -69,9 +76,13 @@ function PainelAdm (){
         <button type="submit" className={styles.btnlogin}> Enviar </button>
         
         </form>
-        </>}
+        
         
         </div>
+        </>}
+        </>
+        
+
     )
 }
 

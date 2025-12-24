@@ -11,8 +11,11 @@
     margin: 10px 10px;
 }
 
-.item input {
-    width: 80%;
+.item textarea{
+    resize: vertical;
+}
+.item input, .item textarea {
+    width: 90%;
     display: block;
     margin: auto;
     margin-bottom: 0px;
@@ -43,7 +46,38 @@
 width: 150px;
 justify-content: center;
 align-items: center;
-margin: 30px auto;}
+margin: 30px auto;
+position: relative;}
+
+.on .ocultar, .off .ocultar {display: none;}
+
+.icoeditfoto {
+    position: absolute;
+    background-color: none;
+    background: none;
+    border: 0;
+    color: white;
+    font-size: 50px;
+    cursor: pointer;
+    transition: 0.2s;
+    z-index: 3;
+}
+
+.icoeditfoto:hover {
+    transition: 0.4s;
+    transform:  scale(1.3);
+}
+
+.imageedit {
+    filter: brightness(70%);
+    
+}
+.item .imageedit:hover {
+    border-radius: 100%;
+    transform: none;
+    object-fit: cover;
+    
+}
 
 .item img {
    

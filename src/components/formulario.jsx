@@ -1,9 +1,10 @@
 import styles from '../components/formulario.module.css'
 import { Controller, useForm } from 'react-hook-form'
 import axios from 'axios'
-import { use, useRef, useState } from 'react'
+import { useRef, useState } from 'react'
 
 import { PatternFormat } from 'react-number-format'
+import loading from '../img/load.gif'
 
 function Formulario({ funcao }) {
 
@@ -23,15 +24,23 @@ function Formulario({ funcao }) {
     errofotos()
 
     const fotoup = new FormData()
+    
     fotoup.append("file", foto.current)
 
     setEstado("load")
+    const token = localStorage.getItem("token")
     axios.post(`${import.meta.env.VITE_URLAPI}/upload`, fotoup,
-      { headers: { authorization: `Bearer ${import.meta.env.VITE_BTOKEN}` } }
+      { headers: { authorization: `Bearer ${token}` } }
     )
       .then((resposta) => {
         const imagemurl = resposta.data.url
-        const finalData = { ...dados, foto: imagemurl }
+        const imageid = resposta.data.public_idfoto
+        
+        const finalData = { ...dados, foto: imagemurl, public_idfoto:imageid}
+        console.log(finalData)
+
+
+        
         funcao(finalData)
         reset()
 
@@ -42,7 +51,8 @@ function Formulario({ funcao }) {
 
       }
       )
-      .catch(() => {
+      .catch((erro) => {
+        console.log('erro: ',erro)
         setTimeout(() => {
           setEstado("1")
         }, 1000)
@@ -88,7 +98,8 @@ clearErrors - limpa erros
   return (<>
 
 
-    {estado === "load" && <p>Carregando...</p>}
+    {estado === "load" && <img src={loading}
+                className={styles.imgload}/>}
 
 
     <form onSubmit={handleSubmit(enviar)} onClick={errofotos} className={styles.formulario}>

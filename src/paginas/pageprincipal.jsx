@@ -2,7 +2,7 @@ import Item from '../components/Item'
 import { useQuery } from '@tanstack/react-query';
 import { ListarItem } from '../hookapi/fetchItem';
 import styles from "./pageprincipal.module.css"
-
+import loading from '../img/load.gif'
 
 function PagePrincipal (){
 
@@ -13,7 +13,9 @@ function PagePrincipal (){
         queryFn: ListarItem
       })
 
-      if (isLoading) return <p className={styles.pavisook}>Carregando...</p>
+      if (isLoading) return <img src={loading}
+                  className={styles.imgload}/>
+                  
       if (error) return <p className={styles.paviso}>Erro ao carregar itens</p>
 
 
@@ -32,6 +34,8 @@ function PagePrincipal (){
     return(<>
 
     <div className={styles.container}>
+
+
 
     {data.length<=0 &&
     <p className={styles.pavisook}>Nenhum item cadastrado! </p>

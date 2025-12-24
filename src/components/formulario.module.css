@@ -11,6 +11,12 @@
    
 }
 
+.imgload {
+    padding-top: 60px;
+    width: 80px;
+}
+
+
 .formulario label {
     color: #fff;
     font-size: 25px;
@@ -78,14 +84,18 @@
 }
 
 .formulario textarea{
-    resize: none
+    field-sizing: content;
+    resize: vertical;
+    min-height: 58px;
+    max-height: 150px;
 }
 .formulario input[type="text"], .formulario input[type="tel"], .formulario textarea{
     font-size: 20px;
     padding: 5px 20px;
     border-radius: 10px;
     border: 0;
-    background-color: #E3DFDA;}
+    background-color: #E3DFDA;
+    color:  #034078;}
 
 
 @media (max-width: 580px) {
