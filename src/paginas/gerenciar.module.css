@@ -1,8 +1,16 @@
-.botoesger{
+.containeroff{
     display: flex;
     justify-content: right;
     padding-bottom: 10px;
     padding-right: 10px;
+}
+
+.contg{
+  display: inline-block;
+  grid-template-columns: 100px 1fr;
+  grid-template-rows: 200px 5fr;
+  gap: 30px;
+  margin-top: 60px;
 }
 
 .imgload {
@@ -10,70 +18,8 @@
     width: 80px;
 }
 
-.botoesger p{color: #fff;
-font-weight: bold;
-padding: 0px 20px;}
-
-
-.btnlogout, .btncriar, .btnreport{
-    margin: 0 5px;
-    padding: 5px 10px;
-    font-weight: bold;
-    color: #fff;
-    border-radius: 0px 0px 10px 10px;
-    font-size: 15px;
-    background-color: #1282A2; 
-    border: 3px solid #1282A2; 
-    transition: 0.5s;
-    cursor: pointer;
-}
-
-.btncriar:hover{  
-     color: #fff;
-     background-color:  #12a220; 
-     border: 3px solid #1282A2; 
-}
-
-
-.btnlogout:hover{  
-     color: #fff;
-     background-color:  #a21212; 
-     border: 3px solid #1282A2; 
-}
-
-
-.btnreport:hover{  
-     color: #fff;
-     background-color:  #bc950b; 
-     border: 3px solid #1282A2; 
-}
-
-
-
 .paviso {
     padding-top: 40px;
     font-size: 20px;
     font-weight: bold;
 color: rgb(147, 28, 28);}
-
-@media (max-width: 640px) {
-
-    .botoesger{
-    display: flex;
-    justify-content: center;
-    padding-bottom: 10px;
-    padding-right: 10px;
-   
-}
-
-.btnlogout, .btncriar, .btnreport{
-     font-size: 15px;
-}
-
-@media (max-width: 400px){
-.btnlogout, .btncriar, .btnreport{
-     font-size: 10px;
-}
-}
-
-}

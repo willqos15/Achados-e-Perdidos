@@ -11,9 +11,12 @@ import loading from '../img/load.gif'
 
 function Gerenciar() {
 
+  
   const { adm, setAdm } = useContext(ContextNavbar)
   const [poup, setPoup] = useState(false)
   const [delid,setDelId] = useState()
+  const [delnome,setDelNome] = useState()
+  const [estado,setEstado] = useState("ok")
 
   const { data, isLoading, error } = useQuery({
     queryKey: ["itens"], queryFn: ListarItem
@@ -23,6 +26,10 @@ function Gerenciar() {
 
   const navigate = useNavigate()
 
+  const [load, setLoad] = useState(false)
+  function Start() {setLoad(true)}
+  function End() {setLoad(false)}
+
 
 
 
@@ -30,16 +37,17 @@ function Gerenciar() {
   const mutationUpdate = useMutation(
     {
       mutationFn: ({ id, dados }) => EditarItem(id, dados),
-      onSuccess: () => {queryClient.invalidateQueries(["itens"])
-        console.log("on sucess")
+      onSuccess: async () => {await queryClient.invalidateQueries(["itens"])
+        setLoad(false)
         
       }
     }
   )
 
   function fatualizar(id, dados) {
+    setEstado("carregando")
+    mutationUpdate.mutateAsync({ id, dados })
     
-    mutationUpdate.mutate({ id, dados })
   }
 
 
@@ -62,12 +70,13 @@ function Gerenciar() {
       onSuccess: () => queryClient.invalidateQueries(["itens"])
     }
   )
-  function deletar(id) {
+  function deletar(id, Nome) {
     if(!poup) { setDelId(id)
-      console.log("funcao deletar Xpoup: ", id)
+      
+    if (Nome.length>35) {setDelNome(Nome.slice(0,35)+"...")}
+    else {setDelNome(Nome)}
       return setPoup(true)}
     if(poup){
-      console.log("funcao deletar +poup: ",delid)
     mutationDelete.mutate(delid)
     setPoup(false)
     }
@@ -94,11 +103,16 @@ function Gerenciar() {
     if (isLoading) return  <img src={loading}
             className={styles.imgload}/>
   if (error) return <p>Erro ao carregar itens</p>
+
+
   
   return (<>
 
+   {load === true ? <img src={loading} className={styles.imgload}/> : <>  
+  
+
     <Alert titulo={"AVISO"}
-      descricao={"Tem certeza que deseja excluir o ítem"}
+      descricao={`Tem certeza que deseja excluir o ítem "${delnome}"?`}
       bty={"Sim"} fbty={deletar}
       btn={"Não"} fbtn={() => setPoup(false)}
       estado={poup}
@@ -107,15 +121,8 @@ function Gerenciar() {
 
 
 
-    <div className={styles.botoesger}>
-
-
-
-
-
-
-    </div>
-    <div className="conteiner">
+    
+    <div className={styles.contg}>
 
       {data.length <= 0 && <p className={styles.paviso}>Nenhum item cadastrado! </p>}
       {data?.map(x => (
@@ -132,16 +139,16 @@ function Gerenciar() {
           admin={true}
           fdel={deletar}
           fatualizar={fatualizar}
-          valoresget={data} />
+          valoresget={data}
+          itemstart={Start}
+          itemend={End}
+         />
       ))}
 
     </div>
 
-
-    <div>
-
-    </div>
-
+     </> } 
+    
   </>)
 
 }

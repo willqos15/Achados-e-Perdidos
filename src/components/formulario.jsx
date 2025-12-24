@@ -15,7 +15,10 @@ function Formulario({ funcao }) {
 
   function errofotos() {
 
-    if (!foto.current) { return setMsgFoto("erro") }
+    if (!foto.current) {
+      console.log(foto.current)
+      return setMsgFoto("erro") }
+    else {console.log(foto.current)}
     setMsgFoto("")
   }
 
@@ -37,10 +40,7 @@ function Formulario({ funcao }) {
         const imageid = resposta.data.public_idfoto
         
         const finalData = { ...dados, foto: imagemurl, public_idfoto:imageid}
-        console.log(finalData)
-
-
-        
+  
         funcao(finalData)
         reset()
 
@@ -102,7 +102,7 @@ clearErrors - limpa erros
                 className={styles.imgload}/>}
 
 
-    <form onSubmit={handleSubmit(enviar)} onClick={errofotos} className={styles.formulario}>
+    <form onSubmit={handleSubmit(enviar)}  className={styles.formulario}>
       {estado === "1" &&
         <>
 
@@ -168,7 +168,7 @@ clearErrors - limpa erros
 
           {errors.contato && <p>{errors.contato.message}</p>}
 
-          <input type="submit" value="Enviar" className={styles.botaoenviar} />
+          <input type="submit" value="Enviar" onClick={errofotos} className={styles.botaoenviar} />
 
         </>
       }

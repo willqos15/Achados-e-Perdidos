@@ -5,6 +5,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom"
 import { ContextNavbar } from "../ContextNavbar";
 import { FaSearch } from "react-icons/fa";
+import Alert from "./alert";
 
 
 
@@ -15,6 +16,7 @@ function Navbar() {
   const { itens, setItens, barraBusca, setBarraBusca, adm, setAdm } = useContext(ContextNavbar)
   const [menu, setMenu] = useState(false)
   const [wbarra, setWBarra] = useState("")
+  const [poup, setPoup] = useState(false)
 
  
   function pesquisar(e) {
@@ -81,6 +83,7 @@ function Navbar() {
     localStorage.removeItem("token")
     navigate('/painel')
     setAdm(false)
+    setPoup(false)
   }
 
 
@@ -135,7 +138,7 @@ function Navbar() {
               <span onClick={telaadm}>Gerenciar</span>
               {adm && <>
               <span onClick={paginacriar}>Cadastrar</span>
-              <span onClick={sair}
+              <span onClick={()=>setPoup(true)}
               className={styles.logout}>Sair</span>
               </>}
             </nav>
@@ -159,6 +162,13 @@ function Navbar() {
 
 
       </header>
+
+      <Alert titulo={"AVISO"}
+      descricao={`Tem certeza que deseja sair da conta?`}
+      bty={"Sim"} fbty={sair}
+      btn={"Não"} fbtn={() => setPoup(false)}
+      estado={poup}
+    />
 
 
     </>

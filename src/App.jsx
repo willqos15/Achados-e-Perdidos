@@ -11,6 +11,7 @@ import { ContextNavbar } from './ContextNavbar';
 import { useState } from 'react';
 import PainelAdm from './paginas/PainalAdm';
 import MFooter from './components/mfooter';
+import Prorota from './paginas/Prorota';
 
 
 /*PALETA DE COR
@@ -43,8 +44,14 @@ function App() {
 
       <Routes>
         <Route path='/' element={<PagePrincipal/>}/>
+
+        <Route element={<Prorota/>}>
         <Route path='/cadastro' element={<PageCadastro/>}/>
         <Route path='/gerenciar' element={<Gerenciar/>}/>
+        </Route>
+        
+        
+
         <Route path='/painel' element={<PainelAdm/>}/>
         <Route path='/busca/' element={<PageBusca/>}/>
       </Routes>
