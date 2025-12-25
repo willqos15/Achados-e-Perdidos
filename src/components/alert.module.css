@@ -11,7 +11,7 @@
     padding: 0px;
     margin: 0px;
     max-width: 250px;
-    max-height: 200px;
+    max-height: 300px;
     border-radius: 20px 20px 0px 0px;
 
   position: fixed;
@@ -28,6 +28,7 @@
     color: #fff;
     font-size: 0.8rem;
     margin: 0px;
+    padding: 10px 0px;
 }
 
 .alerttexto p {
@@ -46,19 +47,21 @@
 .alertbtn button {
     background-color: #1282A2;
     color: #fff;
-    font-size: 20px;
     width: 100%;
     border: 0;
     border-radius: 5px;
     font-weight: bold;
      transition: 0.5s;
+     padding: 5px 10px;
+     margin: 5px 0px;
+     font-size: 0.6rem;
 }
 
 .alertbtn button:hover {
     transition: 0.5s;
     background-color: #034078;
     color: #fff;
-    font-size: 20px;
+    
     width: 100%;
     border: 0;
     border-radius: 5px;

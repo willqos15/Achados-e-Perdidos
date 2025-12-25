@@ -11,6 +11,7 @@
    
 }
 
+.ocultar {display: none}
 .imgload {
     padding-top: 60px;
     width: 80px;
@@ -37,12 +38,8 @@
     align-items: center;
 }
 
-.formulario input[type="file"]{
-    padding: 0px;
-    width: 140px;
-    color:#1282A2; 
-    font-size: 20px;
-}
+
+
 
 .nomarquivo{
     font-size: 15px;
@@ -56,9 +53,12 @@
     font-size: 30px;
 }
 
+.caixaimg button{
+    font-size: 20px;
+}
 
 
-.botaoenviar, .formulario input[type="file"]::file-selector-button{
+.botaoenviar, .caixaimg button{
     border-radius: 10px;
     padding: 10px 10px;
     background-color: #034078;
@@ -70,7 +70,7 @@
     font-family: "WDXL Lubrifont JP N", sans-serif;
 }
 
-.botaoenviar:hover, .formulario input[type="file"]::file-selector-button:hover{
+.botaoenviar:hover, .caixaimg button:hover{
     border-radius: 10px;
     padding: 10px 10px;
     border: 0;
@@ -79,9 +79,6 @@
     transform: scale(0.9);
 }
 
-.formulario input[type="file"]::-webkit-file{
-    padding: 0px 20px;
-}
 
 .formulario textarea{
     field-sizing: content;
@@ -89,7 +86,7 @@
     min-height: 58px;
     max-height: 150px;
 }
-.formulario input[type="text"], .formulario input[type="tel"], .formulario textarea{
+.formulario input,.formulario input[type="tel"], .formulario textarea{
     font-size: 20px;
     padding: 5px 20px;
     border-radius: 10px;

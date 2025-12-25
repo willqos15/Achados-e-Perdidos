@@ -15,10 +15,10 @@ function Formulario({ funcao }) {
 
   function errofotos() {
 
-    if (!foto.current) {
-      console.log(foto.current)
+    if (foto.current.name<=0) {
+      console.log('nao tem:', foto.current.name)
       return setMsgFoto("erro") }
-    else {console.log(foto.current)}
+  console.log(foto.current.name)
     setMsgFoto("")
   }
 
@@ -93,6 +93,7 @@ clearErrors - limpa erros
     if (foto.current) {
       setNomeArq(foto.current.name)
     }
+    errofotos()
   }
 
   return (<>
@@ -112,7 +113,12 @@ clearErrors - limpa erros
 
           <label > Carregue uma imagem:</label>
           <div className={styles.caixaimg}>
-            <input type='file' name="file" onChange={uploading} onFocus={Scrollar} />
+
+            <button onClick={()=>{foto.current.click()}}> Escolha sua imagem </button>
+            
+            <input type='file' onChange={uploading} onFocus={Scrollar} ref={foto} className={styles.ocultar}/>
+
+
             <span className={styles.nomarquivo}>
               {nomearq ? nomearq : ""}
             </span>
