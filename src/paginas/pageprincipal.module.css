@@ -1,3 +1,24 @@
+.alertateste{
+    background-color: rgb(252, 255, 177);
+    border-radius: 20px;
+    font-size: 20px;
+    padding: 10px;
+    width: 50vw;
+    text-align: left;
+    margin: 0 auto 30px auto;
+    
+}
+
+.alertateste p {
+    margin: 5px;
+}
+
+
+.alertacentro {
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
 .paviso {
     padding-top: 40px;
     font-size: 20px;
@@ -23,3 +44,12 @@ color: #034078}
   margin-top: 60px;;
 }
 
+
+@media (max-width: 700px) {
+    .alertateste{
+    border-radius: 0px;
+    font-size: 20px;
+    padding: 10px;
+    width: 100%;
+}
+}
