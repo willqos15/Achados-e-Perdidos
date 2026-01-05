@@ -6,6 +6,24 @@ O sistema foi pensado para pequenas empresas ou escolas, onde **um único admini
 
 ---
 
+## Screenshots
+
+
+![Tela Inicial](https://res.cloudinary.com/drklvmtqp/image/upload/v1766695024/Captura_de_tela_2025-12-25_173422_lyyhb2.png)
+
+
+![Tela de Login](https://res.cloudinary.com/drklvmtqp/image/upload/v1766695023/Captura_de_tela_2025-12-25_173555_nwdhrr.png)
+
+
+![Painel Administrativo](https://res.cloudinary.com/drklvmtqp/image/upload/v1766695024/Captura_de_tela_2025-12-25_173519_lexfba.png)
+
+
+![Cadastrando Item](https://res.cloudinary.com/drklvmtqp/image/upload/v1766695024/Captura_de_tela_2025-12-25_173534_mhv4to.png)
+
+![Deletando Item](https://res.cloudinary.com/drklvmtqp/image/upload/v1766695220/Captura_de_tela_2025-12-25_174003_wudqhw.png)
+
+---
+
 ## Backend
 
 Este repositório contém apenas o **frontend** da aplicação.
