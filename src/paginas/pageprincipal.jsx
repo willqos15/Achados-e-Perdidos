@@ -14,26 +14,18 @@ function PagePrincipal() {
   })
 
   if (isLoading) {
-    <div className={styles.alertateste}>
-      <h3 className={styles.alertacentro}>Aviso – Versão de Teste</h3>
-      <p>
-        Esta é uma versão aberta ao público destinada a testes de cadastro.
-        Os visitantes podem criar, editar ou apagar itens, com limite de <strong>5 itens simultâneos</strong> cadastrados.
-        Não nos responsabilizamos pelas informações ou pelo conteúdo das imagens inseridas.
-      </p>
-      <p>
-        Para acessar o painel administrativo do site, utilize o login e senha abaixo:
-      </p>
-      <p className={styles.alertacentro}>
-        <strong>Login:</strong> <code>admin</code><br />
-        <strong>Senha:</strong> <code>admin</code>
-      </p>
+    
+    return <>
+    <img src={loading}
+      className={styles.imgload}/>
+      <div className={styles.alertateste}>
+      <h3 className={styles.alertacentro}>Aviso: Versão de Teste</h3>
       <p>
         <strong>Observação:</strong> o site pode demorar a carregar no primeiro acesso, pois a hospedagem do servidor e do banco de dados está sendo feita de forma gratuita.
       </p>
     </div>
-    return <img src={loading}
-      className={styles.imgload}/>}
+    </>
+    }
 
   if (error) return <p className={styles.paviso}>Erro ao carregar itens</p>
 
@@ -57,8 +49,7 @@ function PagePrincipal() {
       <div className={styles.alertateste}>
         <h3 className={styles.alertacentro}>Aviso - Versão de Teste</h3>
         <p>
-          Esta é uma versão aberta ao público destinada a testes de cadastro.
-          Os visitantes podem criar, editar ou apagar itens, com limite de <strong>5 itens simultâneos</strong> cadastrados.
+          Esta é uma de testes. Os visitantes podem criar, editar ou apagar itens, com limite de <strong>5 itens simultâneos</strong> cadastrados.
           Não nos responsabilizamos pelas informações ou pelo conteúdo das imagens inseridas.
         </p>
         <p>
@@ -67,9 +58,6 @@ function PagePrincipal() {
         <p className={styles.alertacentro}>
           <strong>Login:</strong> <code>admin</code><br />
           <strong>Senha:</strong> <code>admin</code>
-        </p>
-        <p>
-          <strong>Observação:</strong> o site pode demorar a carregar no primeiro acesso, pois a hospedagem do servidor e do banco de dados está sendo feita de forma gratuita.
         </p>
       </div>
 
