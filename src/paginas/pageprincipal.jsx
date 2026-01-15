@@ -49,7 +49,7 @@ function PagePrincipal() {
       <div className={styles.alertateste}>
         <h3 className={styles.alertacentro}>Aviso - Versão de Teste</h3>
         <p>
-          Esta é uma de testes. Os visitantes podem criar, editar ou apagar itens, com limite de <strong>5 itens simultâneos</strong> cadastrados.
+          Os visitantes podem criar, editar ou apagar itens, com limite de <strong>5 itens simultâneos</strong> cadastrados.
           Não nos responsabilizamos pelas informações ou pelo conteúdo das imagens inseridas.
         </p>
         <p>
